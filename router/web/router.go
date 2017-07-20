@@ -24,9 +24,6 @@ func Routers() *echo.Echo {
 	// Echo instance
 	e := echo.New()
 
-	// OpenTracing
-	e.Use(opentracing.OpenTracing("web"))
-
 	// Context自定义
 	e.Use(NewContext())
 
@@ -69,6 +66,9 @@ func Routers() *echo.Echo {
 	e.Use(mw.GzipWithConfig(mw.GzipConfig{
 		Level: 5,
 	}))
+
+	// OpenTracing
+	e.Use(opentracing.OpenTracing("web"))
 
 	// 模板
 	e.Renderer = render.LoadTemplates()

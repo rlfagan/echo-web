@@ -3,9 +3,26 @@ package model
 import (
 	"time"
 
+	"echo-web/model/orm"
 	"echo-web/module/auth"
 	"echo-web/module/log"
 )
+
+func (u *User) TraceGetUserById(id uint64) *User {
+	if s := u.Trace(); s != nil {
+		defer s.Finish()
+	}
+
+	user := User{}
+	var count int64
+	db := DB().Where("id = ?", id)
+	if err := Cache(db).First(&user).Count(&count).Error; err != nil {
+		log.Debugf("GetUserById error: %v", err)
+		return nil
+	}
+
+	return &user
+}
 
 func (u *User) GetUserById(id uint64) *User {
 	user := User{}
@@ -38,6 +55,8 @@ func (u *User) AddUserWithNicknamePwd(nickname string, pwd string) *User {
 }
 
 type User struct {
+	orm.Model `gorm:"-"`
+
 	Id        uint64    `json:"id,omitempty"`
 	Nickname  string    `form:"nickname" json:"nickname,omitempty"`
 	Password  string    `form:"password" json:"-"`

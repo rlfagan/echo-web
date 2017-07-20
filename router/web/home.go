@@ -6,6 +6,8 @@ import (
 
 	"github.com/opentracing/opentracing-go"
 
+	"echo-web/model"
+	"echo-web/model/orm"
 	"echo-web/module/log"
 )
 
@@ -31,6 +33,12 @@ func HomeHandler(c *Context) error {
 	} else {
 		log.Debugf("opentracing span nil")
 	}
+
+	User := model.User{
+		Model: orm.Model{Context: c},
+		Id:    1,
+	}
+	User.TraceGetUserById(1)
 
 	c.Set("tmpl", "web/home")
 	c.Set("data", map[string]interface{}{
