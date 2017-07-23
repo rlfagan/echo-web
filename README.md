@@ -158,3 +158,23 @@ util            公共工具
 安全 | SQL注入等
 日志 | 分级
 多语言 | i18n
+
+## Confd管理配置
+```bash
+# 安装confd
+$ go get github.com/kelseyhightower/confd
+```
+```bash
+# 将配置写入etcd，统一前置echo-web
+$ etcdctl ls --recursive --sort /echo-web
+/echo-web/app
+/echo-web/app/name
+......
+/echo-web/tmpl/suffix
+/echo-web/tmpl/type
+
+$ cd {pwd}/echo-web
+$ confd -onetime -confdir conf  -backend etcd -node http://127.0.0.1:4001 -prefix echo-web
+```
+
+
