@@ -110,8 +110,8 @@ $ ./build.sh -l		    # 打包Linux平台
 assets          Web服务静态资源
 conf            项目配置
 middleware      中间件
-mode            模型，数据库连接&ORM
-  └ orm         ORM扩展
+model           模型，数据库连接&ORM
+  └ orm         [ORM扩展](https://github.com/hb-go/echo-web/tree/master/model/orm)
 module          模块封装
   ├ auth        Auth授权
   ├ cache       缓存
@@ -150,7 +150,7 @@ util            公共工具
 [模板](https://github.com/hb-go/echo-web/tree/master/module/render) | 支持html/template、[pongo2](http://github.com/flosch/pongo2)，模板支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 静态 | 静态资源，支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 安全 | CORS、CSRF、XSS、HSTS、验证码等
-[监控](https://github.com/hb-go/echo-web/blob/master/middleware/opentracing/opentracing.go) | [OpenTracing](http://opentracing.io/)，如何在项目中更方便的使用还需要研究，如ORM层
+[监控](https://github.com/hb-go/echo-web/blob/master/middleware/opentracing/opentracing.go) | [OpenTracing](http://opentracing.io/)，如何在项目中更方便的使用还需要研究，如[ORM层](https://github.com/hb-go/echo-web/blob/master/model/user.go#L11)
 其他 | JWT、Socket演示
 
 目标功能 | 描述

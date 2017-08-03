@@ -17,3 +17,16 @@ db := Cache(db).First(&user).Count(&count)  // *CacheDB
 // 如果要取消缓存，中间插入.DB
 db := Cache(db).First(&user).DB.Count(&count)   // *gorm.DB
 ```
+
+#### ORM层OpenTracing支持 [示例](https://github.com/hb-go/echo-web/blob/master/router/web/home.go#L37)
+```
+// 将Request context传入Model
+u := model.User{
+    Model: orm.Model{Context: c},
+}
+
+// ORM查询时启动Trace
+if s := u.Trace(); s != nil {
+    defer s.Finish()
+}
+```
