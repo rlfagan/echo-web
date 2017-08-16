@@ -88,6 +88,7 @@ server{
 
 ## 运行
 ```shell
+# 首次运行必须带 -a -t，更新assets.go、template.go的资源路径为本地
 $ ./run.sh [-a] [-t]        # -a -t 可选(须安装Bindata)，以debug方式更新assets、template的Bindata资源包
 
 # 浏览器访问
