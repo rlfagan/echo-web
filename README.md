@@ -103,8 +103,12 @@ http://localhost:8700/traces
 > 打包静态资源及模板文件须[安装Bindata](https://github.com/jteeuwen/go-bindata#installation)
 
 ```shell
+# 打包
 $ ./build.sh 		    # 默认本机
 $ ./build.sh -l		    # 打包Linux平台
+
+# 运行
+$ ./echo-web -c conf/conf.toml      # -c指定配置文件，默认conf/conf.toml
 ```
 ## 目录结构
 ```sh
@@ -166,7 +170,7 @@ util            公共工具
 $ go get github.com/kelseyhightower/confd
 ```
 ```bash
-# 将配置写入etcd，统一前置echo-web
+# 将配置写入etcd，统一前缀echo-web
 $ etcdctl ls --recursive --sort /echo-web
 /echo-web/app
 /echo-web/app/name

@@ -64,8 +64,6 @@
 ## what source location any dependent projects specify.
 # source = "https://github.com/myfork/package.git"
 
-
-
 [[constraint]]
   branch = "master"
   name = "github.com/BurntSushi/toml"
@@ -73,10 +71,6 @@
 [[constraint]]
   branch = "master"
   name = "github.com/dchest/captcha"
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/dgrijalva/jwt-go"
 
 [[constraint]]
   branch = "master"

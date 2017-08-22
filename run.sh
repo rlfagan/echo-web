@@ -27,7 +27,7 @@ do
             go-bindata -ignore=\\.DS_Store -debug -ignore=template.go -pkg="template" -o template/template.go template/...
             ;;
         ?)  #当有不认识的选项的时候arg为?
-            echo "unkonw argument"
+            echo "unknown argument"
             echo "-h [a] help"
             exit 1
             ;;
@@ -35,7 +35,7 @@ do
 done
 
 # 清空pkg
-echo -e "$LogPrefix `date +"%H:%M:%S"` rmove pkg"
+echo -e "$LogPrefix `date +"%H:%M:%S"` remove pkg"
 rm -rf pkg/*
 
 echo -e "$LogPrefix `date +"%H:%M:%S"` [\033[42;37m run \033[0m] server"
