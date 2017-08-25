@@ -32,10 +32,10 @@
   version = "v3.0.0"
 
 [[projects]]
+  branch = "master"
   name = "github.com/flosch/pongo2"
   packages = ["."]
-  revision = "5e81b817a0c48c1c57cdf1a9056cf76bdee02ca9"
-  version = "v3.0"
+  revision = "58f1f3387f7c57843ff829d92a759d08abe5a63f"
 
 [[projects]]
   name = "github.com/garyburd/redigo"
@@ -47,7 +47,7 @@
   branch = "master"
   name = "github.com/go-sql-driver/mysql"
   packages = ["."]
-  revision = "37b91d8876474f11b8e419f2fa65b15824ab9b9c"
+  revision = "26471af196a17ee75a22e6481b5a5897fb16b081"
 
 [[projects]]
   name = "github.com/gogo/protobuf"
@@ -104,10 +104,16 @@
   revision = "1c35d901db3da928c72a72d8458480cc9ade058f"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/juju/errors"
+  packages = ["."]
+  revision = "c7d06af17c68cd34c835053720b21f6549d9b0ee"
+
+[[projects]]
   name = "github.com/labstack/echo"
   packages = [".","middleware"]
-  revision = "935a60782cbbc55110e7bd4b33120e4567cbee43"
-  version = "v3.2.1"
+  revision = "cec7629194fe4bf83b0c72d9a02d340c7a1468ac"
+  version = "3.2.3"
 
 [[projects]]
   name = "github.com/labstack/gommon"
@@ -179,19 +185,19 @@
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context","websocket"]
-  revision = "1c05540f6879653db88113bc4a2b70aec4bd491f"
+  revision = "57efc9c3d9f91fb3277f8da1cff370539c4d3dc5"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "43e60d72a8e2bd92ee98319ba9a384a0e9837c08"
+  revision = "07c182904dbd53199946ba614a412c61d3c548f5"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/tools"
   packages = ["godoc/vfs"]
-  revision = "84a35ef54dff3c5596983e180ec10919fc432242"
+  revision = "1807494da808122833b9bd8e3e5fa179ef237d41"
 
 [[projects]]
   branch = "master"
@@ -208,6 +214,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "b1e7c9595f6e38ac0d97942eceaf4916df1e54b6766722e361e7693ab26c6873"
+  inputs-digest = "787c55e29a489dba092089e84e98dc25b321e39581831344f32dbe691d64f3bc"
   solver-name = "gps-cdcl"
   solver-version = 1
