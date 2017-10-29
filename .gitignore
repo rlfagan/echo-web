@@ -35,3 +35,4 @@ vendor
 # Bindata
 # assets/assets.go
 # template/template.go
+/echo-web
