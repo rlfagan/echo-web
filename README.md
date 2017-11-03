@@ -8,6 +8,16 @@ Go web framework Echo example.
 - go1.8+
 - Echo V3
 
+#### 目录
+- [环境配置](#环境配置)
+- [运行](#运行)
+- [打包](#打包)
+- [目录结构](#目录结构)
+- [框架功能](#框架功能)
+- [框架功能](#框架功能)
+- [Confd管理配置](#Confd管理配置)
+- [Docker部署](#Docker部署)
+
 ## 环境配置
 
 ##### 1.源码下载
@@ -131,7 +141,7 @@ router          路由
     ├context    自定义Context，便于扩展API层扩展
     └router     路由
   ├ socket      socket示范
-  └ web         Web鲈鱼
+  └ web         Web路由
     ├context    自定义Context，便于扩展Webb层扩展
     └router     路由        
 template        模板
@@ -182,4 +192,44 @@ $ cd {pwd}/echo-web
 $ confd -onetime -confdir conf  -backend etcd -node http://127.0.0.1:4001 -prefix echo-web
 ```
 
+## Docker部署
+> Dockerfile含两种方式，源码方式镜像包偏大
+```
+# 创建镜像，注意修改配置
+$ docker build -t hbchen/echo-web:v0.0.1 .
+
+# 运行容器
+$ docker run  \
+     -p 8080:8080 \
+     --name=echo-web \
+     hbchen/echo-web:v0.0.1
+```
+
+#### *MySQL、Redis、Memcached等服务配置问题
+```bash
+如果是服务在宿主机需要配置服务IP为主机IP，127.0.0.1/localhost网络不通
+
+# hbchen/echo-web使用的配置，在宿主机host上做个映射(192.168.1.8为主机IP)
+# 192.168.1.8 mysql.localhost.com
+# 192.168.1.8 redis.localhost.com
+# 192.168.1.8 memcached.localhost.com
+[database]
+host = "mysql.localhost.com"
+
+[redis]
+server = "redis.localhost.com:6379"
+
+[memcached]
+server = "memcached.localhost.com:11211"
+```
+
+##### 自动修改/etc/hosts，映射自定义域名到主机IP
+```bash
+$ vi ~/.profile
+
+# 添加
+grep -v "etcd.localhost.com\|consul.localhost.com\|mysql.localhost.com\|redis.localhost.com\|memcached.localhost.com" /etc/hosts > ~/hosts_temp
+cat ~/hosts_temp > /etc/hosts
+LC_ALL=C ifconfig en0 | grep 'inet ' | cut -d ' ' -f2 | awk '{print $1 " etcd.localhost.com\n" $1 " consul.localhost.com\n" $1 " mysql.localhost.com\n"$1     " redis.localhost.com\n" $1 " memcached.localhost.com"}' >> /etc/hosts
+```
 
