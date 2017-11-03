@@ -194,7 +194,7 @@ $ confd -onetime -confdir conf  -backend etcd -node http://127.0.0.1:4001 -prefi
 
 ## Docker部署
 > Dockerfile含两种方式，源码方式镜像包偏大
-```
+```bash
 # 创建镜像，注意修改配置
 $ docker build -t hbchen/echo-web:v0.0.1 .
 
@@ -207,7 +207,7 @@ $ docker run  \
 
 #### *MySQL、Redis、Memcached等服务配置问题
 ```bash
-如果是服务在宿主机需要配置服务IP为主机IP，127.0.0.1/localhost网络不通
+# 如果是服务在宿主机需要配置服务IP为主机IP，127.0.0.1/localhost网络不通
 
 # hbchen/echo-web使用的配置，在宿主机host上做个映射(192.168.1.8为主机IP)
 # 192.168.1.8 mysql.localhost.com
