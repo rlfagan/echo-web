@@ -73,10 +73,12 @@ server = "localhost:11211"
 addr = ":8080"
 domain_api = "echo.api.localhost.com"
 domain_web = "echo.www.localhost.com"
+domain_socket = "echo.socket.localhost.com"
 
 # 改host
 $ vi /etc/hosts
 127.0.0.1       echo.api.localhost.com
+127.0.0.1       echo.www.localhost.com
 127.0.0.1       echo.www.localhost.com
 
 # Nginx配置，可选
