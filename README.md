@@ -82,15 +82,17 @@ $ vi /etc/hosts
 # Nginx配置，可选
 server{
     listen       80;
-    server_name  echo.www.localhost.com echo.api.localhost.com;
+    server_name  echo.www.localhost.com echo.api.localhost.com echo.socket.localhost.com;
 
     charset utf-8;
 
     location / {
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header Host            $http_host;
-
         proxy_pass http://127.0.0.1:8080;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
     }
 }
 ```
