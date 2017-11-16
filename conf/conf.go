@@ -40,6 +40,9 @@ type config struct {
 
 	// Memcached
 	Memcached memcached
+
+	// Opentracing
+	Opentracing opentracing
 }
 
 type app struct {
@@ -81,6 +84,13 @@ type redis struct {
 
 type memcached struct {
 	Server string `toml:"server"`
+}
+
+type opentracing struct {
+	Disable     bool   `toml:"disable"`
+	Type        string `toml:"type"`
+	ServiceName string `toml:"service_name"`
+	Address     string `toml:"address"`
 }
 
 func init() {

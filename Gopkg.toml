@@ -115,3 +115,7 @@
 [[constraint]]
   branch = "master"
   name = "sourcegraph.com/sourcegraph/appdash"
+
+[[constraint]]
+  name = "github.com/uber/jaeger-client-go"
+  version = "2.9.0"

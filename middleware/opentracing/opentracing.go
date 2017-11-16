@@ -10,15 +10,92 @@ import (
 	"github.com/labstack/gommon/log"
 	"github.com/opentracing/opentracing-go"
 	"sourcegraph.com/sourcegraph/appdash"
+	"github.com/uber/jaeger-lib/metrics"
+	"github.com/uber/jaeger-client-go"
+	jaegercfg "github.com/uber/jaeger-client-go/config"
 	appdashot "sourcegraph.com/sourcegraph/appdash/opentracing"
 	"sourcegraph.com/sourcegraph/appdash/traceapp"
+	"io"
 )
 
 const (
 	DefaultKey = "github.com/hb-go/echo-web/middleware/opentracing"
+
+	TracerTypeJaeger = "jaeger"
+
+	TracerTypeAppdash = "appdash"
 )
 
-func InitGlobalTracer() {
+type Configuration struct {
+	Disabled bool
+	Type     string
+}
+
+func (c Configuration) InitGlobalTracer(options ...Option) io.Closer {
+	if c.Disabled {
+		return nil
+	} else {
+		opts := applyOptions(c.Type, options...)
+
+		switch c.Type {
+		case TracerTypeAppdash:
+			initGlobalTracer_Appdash(opts.Address)
+			return nil
+		case TracerTypeJaeger:
+			return initGlobalTracer_Jaeger(opts.ServiceName, opts.Address)
+		default:
+			return nil
+		}
+	}
+}
+
+func initGlobalTracer_Jaeger(serviceName, addr string) io.Closer {
+	// Sample configuration for testing. Use constant sampling to sample every trace
+	// and enable LogSpan to log every span via configured Logger.
+	cfg := jaegercfg.Configuration{
+		Sampler: &jaegercfg.SamplerConfig{
+			Type:  jaeger.SamplerTypeConst,
+			Param: 1,
+		},
+		Reporter: &jaegercfg.ReporterConfig{
+			LogSpans: true,
+		},
+	}
+
+	// Example logger and metrics factory. Use github.com/uber/jaeger-client-go/log
+	// and github.com/uber/jaeger-lib/metrics respectively to bind to real logging and metrics
+	// frameworks.
+	jLogger := &jaegerLogger{}
+	jMetricsFactory := metrics.NullFactory
+
+	metricsFactory := metrics.NewLocalFactory(0)
+	metrics := jaeger.NewMetrics(metricsFactory, nil)
+
+	sender, err := jaeger.NewUDPTransport(addr, 0)
+	if err != nil {
+		log.Printf("could not initialize jaeger sender: %s", err.Error())
+		return nil
+	}
+
+	repoter := jaeger.NewRemoteReporter(sender, jaeger.ReporterOptions.Metrics(metrics))
+
+	// Initialize tracer with a logger and a metrics factory
+	closer, err := cfg.InitGlobalTracer(
+		serviceName,
+		jaegercfg.Logger(jLogger),
+		jaegercfg.Metrics(jMetricsFactory),
+		jaegercfg.Reporter(repoter),
+	)
+
+	if err != nil {
+		log.Printf("could not initialize jaeger tracer: %s", err.Error())
+		return nil
+	}
+	//defer closer.Close()
+	return closer
+}
+
+func initGlobalTracer_Appdash(addr string) {
 	// OpenTracing
 	// glide get github.com/opentracing/opentracing-go
 	// glide get sourcegraph.com/sourcegraph/appdash
@@ -39,14 +116,12 @@ func InitGlobalTracer() {
 	go cs.Start()
 
 	// Print the URL at which the web UI will be running.
-	appdashPort := 8700
-	appdashURLStr := fmt.Sprintf("http://localhost:%d", appdashPort)
-	appdashURL, err := url.Parse(appdashURLStr)
+	appdashURL, err := url.Parse(addr)
 	if err != nil {
-		errStr := fmt.Sprintf("Error parsing %s: %s", appdashURLStr, err)
+		errStr := fmt.Sprintf("error appdash url parsing %s: %s", addr, err)
 		log.Panic(errStr)
 	}
-	log.Debugf("To see your traces, go to %s/traces\n", appdashURL)
+	log.Debugf("to see your traces, go to %s/traces\n", appdashURL)
 
 	// Start the web UI in a separate goroutine.
 	tapp, err := traceapp.New(nil, appdashURL)
@@ -56,7 +131,7 @@ func InitGlobalTracer() {
 	tapp.Store = store
 	tapp.Queryer = store
 	go func() {
-		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", appdashPort), tapp))
+		log.Fatal(http.ListenAndServe(":"+appdashURL.Port(), tapp))
 	}()
 
 	tracer := appdashot.NewTracer(appdash.NewRemoteCollector(collectorAdd))
@@ -107,4 +182,15 @@ func Default(c echo.Context) opentracing.Span {
 		return nil
 	}
 	return c.Get(DefaultKey).(opentracing.Span)
+}
+
+type jaegerLogger struct{}
+
+func (l *jaegerLogger) Error(msg string) {
+	log.Debugf("ERROR: %s", msg)
+}
+
+// Infof logs a message at info priority
+func (l *jaegerLogger) Infof(msg string, args ...interface{}) {
+	log.Debugf(msg, args...)
 }

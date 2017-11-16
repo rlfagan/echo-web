@@ -50,7 +50,16 @@ func RunSubdomains(confFilePath string) {
 	e.Pre(mw.RemoveTrailingSlash())
 
 	// OpenTracing
-	opentracing.InitGlobalTracer()
+	otCtf := opentracing.Configuration{
+		Disabled: Conf.Opentracing.Disable,
+		Type:     Conf.Opentracing.Type,
+	}
+	if closer := otCtf.InitGlobalTracer(
+		opentracing.ServiceName(Conf.Opentracing.ServiceName),
+		opentracing.Address(Conf.Opentracing.Address),
+	); closer != nil {
+		defer closer.Close()
+	}
 
 	// 日志级别
 	e.Logger.SetLevel(GetLogLvl())

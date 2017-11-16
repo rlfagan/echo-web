@@ -28,4 +28,8 @@ keys = [
     "/redis/server",
     "/redis/pwd",
     "/memcached/server",
+    "/opentracing/disable",
+    "/opentracing/type",
+    "/opentracing/service_name",
+    "/opentracing/address",
 ]

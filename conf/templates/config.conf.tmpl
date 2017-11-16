@@ -49,3 +49,16 @@ pwd = "{{getv "/redis/pwd"}}"
 
 [memcached]
 server = "{{getv "/memcached/server"}}"
+
+[opentracing]
+disable = {{getv "/opentracing/disable"}}
+
+# jaeger or appdash
+type = "{{getv "/opentracing/type"}}"
+
+# jaeger serviceName
+service_name = "{{getv "/opentracing/service_name"}}"
+
+# jaeger-agent 127.0.0.1:6831
+# appdash http://localhost:8700
+address = "{{getv "/opentracing/address"}}"

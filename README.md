@@ -18,6 +18,7 @@ Go web framework Echo example.
 - [框架功能](#框架功能)
 - [框架功能](#框架功能)
 - [Confd管理配置](#confd%e7%ae%a1%e7%90%86%e9%85%8d%e7%bd%ae)
+- [OpenTracing](#OpenTracing)
 - [Docker部署](#docker%e9%83%a8%e7%bd%b2)
 
 ## 环境配置
@@ -196,6 +197,25 @@ $ etcdctl ls --recursive --sort /echo-web
 
 $ cd {pwd}/echo-web
 $ confd -onetime -confdir conf  -backend etcd -node http://127.0.0.1:4001 -prefix echo-web
+```
+
+## OpenTracing
+> 可在Conf.toml禁用或开启
+- Appdash可直接使用，查看[http://localhost:8700](http://localhost:8700)
+- Jaeger需要搭建服务，可在[Docker搭建开发环境](http://jaeger.readthedocs.io/en/latest/getting_started/#all-in-one-docker-image)，查看[http://localhost:16686](http://localhost:16686)
+```bash
+[opentracing]
+disable = false
+
+# jaeger or appdash
+type = "jaeger"
+
+# jaeger serviceName
+service_name = "echo-web"
+
+# jaeger-agent 127.0.0.1:6831
+# appdash http://localhost:8700
+address = "127.0.0.1:6831"
 ```
 
 ## Docker部署
