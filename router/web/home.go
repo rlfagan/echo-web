@@ -9,6 +9,7 @@ import (
 	"echo-web/model"
 	"echo-web/model/orm"
 	"echo-web/module/log"
+	. "echo-web/conf"
 )
 
 func HomeHandler(c *Context) error {
@@ -16,7 +17,7 @@ func HomeHandler(c *Context) error {
 	span := c.OpenTracingSpan()
 	if span != nil {
 		// Since we have to inject our span into the HTTP headers, we create a request
-		asyncReq, _ := http.NewRequest("GET", "http://echo.api.localhost.com/login", nil)
+		asyncReq, _ := http.NewRequest("GET", Conf.Server.DomainApi+"/login", nil)
 		// Inject the span context into the header
 		err := span.Tracer().Inject(span.Context(),
 			opentracing.TextMap,
