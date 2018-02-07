@@ -16,7 +16,7 @@ Go web framework Echo example.
 - [打包](#打包)
 - [目录结构](#目录结构)
 - [框架功能](#框架功能)
-- [supervisord部署](#supervisord%E9%83%A8%E7%BD%B2)
+- [Supervisord部署](#Supervisord%E9%83%A8%E7%BD%B2)
 - [Confd管理配置](#confd%e7%ae%a1%e7%90%86%e9%85%8d%e7%bd%ae)
 - [OpenTracing](#opentracing)
 - [Docker部署](#docker%e9%83%a8%e7%bd%b2)
@@ -175,7 +175,7 @@ util            公共工具
 [OpenTracing](http://opentracing.io/) | Tracer支持Jaeger、Appdash，在Request、ORM层做跟踪，可在conf配置开启)
 其他 | JWT、Socket演示
 
-## supervisord部署
+## Supervisord部署
 ```bash
 $ vi /etc/supervisor/conf.d/echo-web.conf
 ```
