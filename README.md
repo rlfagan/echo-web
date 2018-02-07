@@ -16,6 +16,7 @@ Go web framework Echo example.
 - [打包](#打包)
 - [目录结构](#目录结构)
 - [框架功能](#框架功能)
+- [supervisord部署](#supervisord%E9%83%A8%E7%BD%B2)
 - [Confd管理配置](#confd%e7%ae%a1%e7%90%86%e9%85%8d%e7%bd%ae)
 - [OpenTracing](#opentracing)
 - [Docker部署](#docker%e9%83%a8%e7%bd%b2)
@@ -174,11 +175,32 @@ util            公共工具
 [OpenTracing](http://opentracing.io/) | Tracer支持Jaeger、Appdash，在Request、ORM层做跟踪，可在conf配置开启)
 其他 | JWT、Socket演示
 
-目标功能 | 描述
-:--- | :---
-安全 | SQL注入等
-日志 | 分级
-多语言 | i18n
+## supervisord部署
+```bash
+$ vi /etc/supervisor/conf.d/echo-web.conf
+```
+
+##### 配置参考
+```bash
+[program:echo-web]
+directory = /{path}/echo-web       											; 程序的启动目录
+command =  /{path}/echo-web/echo-web -c /{path}/echo-web/conf/conf.toml 	; 启动命令，与手动在命令行启动的命令是一样的
+process_name=%(program_name)s       										; process_name expr (default %(program_name)s)
+numprocs=1           														; number of processes copies to start (def 1)
+autostart = true     														; 在 supervisord 启动的时候也自动启动
+startsecs = 5        														; 启动 5 秒后没有异常退出，就当作已经正常启动了
+autorestart = true   														; 程序异常退出后自动重启
+startretries = 3     														; 启动失败自动重试次数，默认是 3
+user = root          														; 用哪个用户启动
+redirect_stderr = true          											; 把 stderr 重定向到 stdout，默认 false
+stdout_logfile_maxbytes = 20MB  											; stdout 日志文件大小，默认 50MB
+stdout_logfile_backups = 7     												; stdout 日志文件备份数
+; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）
+stdout_logfile = /var/log/echo-web/stdout.log
+; 这一配置项的作用是：如果supervisord管理的进程px又产生了若干子进程，使用supervisorctl停止px进程，停止信号会传播给px产生的所有子进程，确保子进程也一起停止。这一配置项对希望停止所有进程的需求是非常有用的。
+stopasgroup=false
+killasgroup=false
+```
 
 ## Confd管理配置
 ```bash
