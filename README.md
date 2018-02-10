@@ -31,6 +31,7 @@ $ git clone git@github.com:hb-go/echo-web.git
 
 ##### 2.依赖安装
 > golang.org依赖需要自己手动处理
+
 > [glide工具安装](https://github.com/Masterminds/glide#install)
 ```shell
 $ cd echo_web/
