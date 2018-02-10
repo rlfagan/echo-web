@@ -31,6 +31,7 @@ _testmain.go
 
 # Glide
 vendor
+golang.org
 
 # Bindata
 # assets/assets.go

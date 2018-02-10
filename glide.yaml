@@ -1,0 +1,49 @@
+package: echo-web
+ignore:
+- golang.org/x/net/websocket
+- golang.org/x/net/context
+- golang.org/x/sys/unix
+- golang.org/x/crypto/acme/autocert
+
+import:
+- package: github.com/BurntSushi/toml
+  version: v0.3.0
+- package: github.com/dchest/captcha
+- package: github.com/dgrijalva/jwt-go
+  version: v3.1.0
+- package: github.com/go-sql-driver/mysql
+  version: v1.3
+- package: github.com/hb-go/echo-mw
+  version: v0.0.1
+  subpackages:
+  - cache
+  - captcha
+  - multitemplate
+  - pongo2echo
+  - session
+  - staticbin
+- package: github.com/hb-go/gorm
+  version: master
+- package: github.com/hb-go/json
+- package: github.com/labstack/echo
+  version: 3.2.6
+  subpackages:
+  - middleware
+- package: github.com/labstack/gommon
+  version: 0.2.3
+  subpackages:
+  - log
+- package: github.com/opentracing/opentracing-go
+  version: v1.0.2
+- package: github.com/sourcegraph/appdash
+  subpackages:
+  - opentracing
+  - traceapp
+- package: github.com/uber/jaeger-client-go
+  version: v2.11.2
+  subpackages:
+  - config
+- package: github.com/uber/jaeger-lib
+  version: v1.3.1
+  subpackages:
+  - metrics

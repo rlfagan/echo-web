@@ -30,6 +30,12 @@ $ git clone git@github.com:hb-go/echo-web.git
 ```
 
 ##### 2.依赖安装
+> [glide工具安装](https://github.com/Masterminds/glide#install)
+```shell
+$ cd echo_web/
+$ glide install
+```
+
 > [dep工具安装](https://github.com/golang/dep#usage)
 ```shell
 $ cd echo_web/
