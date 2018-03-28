@@ -19,11 +19,6 @@ func Routers() *echo.Echo {
 	// Echo instance
 	e := echo.New()
 
-	// OpenTracing
-	if !Conf.Opentracing.Disable {
-		e.Use(opentracing.OpenTracing("api"))
-	}
-
 	// Context自定义
 	e.Use(NewContext())
 
@@ -33,6 +28,14 @@ func Routers() *echo.Echo {
 	}
 	e.Logger.SetPrefix("api")
 	e.Logger.SetLevel(GetLogLvl())
+
+	// Session
+	e.Use(session.Session())
+
+	// OpenTracing
+	if !Conf.Opentracing.Disable {
+		e.Use(opentracing.OpenTracing("api"))
+	}
 
 	// CSRF
 	e.Use(mw.CSRFWithConfig(mw.CSRFConfig{
@@ -50,8 +53,7 @@ func Routers() *echo.Echo {
 
 	e.Static("/favicon.ico", "./assets/img/favicon.ico")
 
-	// Session
-	e.Use(session.Session())
+
 
 	// Cache
 	e.Use(cache.Cache())

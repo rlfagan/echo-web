@@ -14,9 +14,9 @@ type RedisStore struct {
 // until redigo supports sharding/clustering, only one host will be in hostList
 func NewRedisCache(host string, password string, defaultExpiration time.Duration) *RedisStore {
 	var pool = &redis.Pool{
-		MaxIdle:     5,
+		MaxIdle:     10,
 		MaxActive:   50,
-		IdleTimeout: 240 * time.Second,
+		IdleTimeout: 3 * time.Second,
 		Dial: func() (redis.Conn, error) {
 			// the redis protocol should probably be made sett-able
 			c, err := redis.Dial("tcp", host)

@@ -7,9 +7,9 @@
 package session
 
 import (
-	"log"
 	"net/http"
 
+	"github.com/labstack/gommon/log"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo"
 )

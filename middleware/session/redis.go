@@ -1,12 +1,29 @@
 package session
 
 import (
+	"time"
+
 	"github.com/boj/redistore"
 	"github.com/gorilla/sessions"
+	"github.com/garyburd/redigo/redis"
 )
 
 type RedisStore interface {
 	Store
+}
+
+func dial(network, address, password string) (redis.Conn, error) {
+	c, err := redis.Dial(network, address)
+	if err != nil {
+		return nil, err
+	}
+	if password != "" {
+		if _, err := c.Do("AUTH", password); err != nil {
+			c.Close()
+			return nil, err
+		}
+	}
+	return c, err
 }
 
 // size: maximum number of idle connections.
@@ -23,7 +40,21 @@ type RedisStore interface {
 // It is recommended to use an authentication key with 32 or 64 bytes. The encryption key,
 // if set, must be either 16, 24, or 32 bytes to select AES-128, AES-192, or AES-256 modes.
 func NewRedisStore(size int, network, address, password string, keyPairs ...[]byte) (RedisStore, error) {
-	store, err := redistore.NewRediStore(size, network, address, password, keyPairs...)
+
+	store, err := redistore.NewRediStoreWithPool(&redis.Pool{
+		MaxIdle:     size,
+		MaxActive:   50,
+		Wait:        true,
+		IdleTimeout: 3 * time.Second,
+		TestOnBorrow: func(c redis.Conn, t time.Time) error {
+			_, err := c.Do("PING")
+			return err
+		},
+		Dial: func() (redis.Conn, error) {
+			return dial(network, address, password)
+		},
+	}, keyPairs...)
+
 	if err != nil {
 		return nil, err
 	}

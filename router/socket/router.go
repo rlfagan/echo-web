@@ -14,15 +14,15 @@ import (
 func Routers() *echo.Echo {
 	e := echo.New()
 
+	// Session
+	e.Use(session.Session())
+
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
 	// 模板
 	e.Renderer = render.LoadTemplates()
 	e.Use(render.Render())
-
-	// Session
-	e.Use(session.Session())
 
 	// Cache
 	e.Use(cache.Cache())

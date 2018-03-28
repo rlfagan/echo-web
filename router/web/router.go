@@ -34,6 +34,9 @@ func Routers() *echo.Echo {
 	e.Logger.SetPrefix("web")
 	e.Logger.SetLevel(GetLogLvl())
 
+	// Session
+	e.Use(session.Session())
+
 	// CSRF
 	e.Use(mw.CSRFWithConfig(mw.CSRFConfig{
 		ContextKey:  "_csrf",
@@ -75,9 +78,6 @@ func Routers() *echo.Echo {
 	// 模板
 	e.Renderer = render.LoadTemplates()
 	e.Use(render.Render())
-
-	// Session
-	e.Use(session.Session())
 
 	// Cache
 	e.Use(cache.Cache())
