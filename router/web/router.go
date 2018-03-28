@@ -4,17 +4,17 @@ import (
 	"github.com/labstack/echo"
 	mw "github.com/labstack/echo/middleware"
 
-	"github.com/hb-go/echo-mw/captcha"
-	"github.com/hb-go/echo-mw/staticbin"
+	"github.com/hb-go/echo-web/middleware/captcha"
+	"github.com/hb-go/echo-web/middleware/staticbin"
 
-	"echo-web/assets"
-	. "echo-web/conf"
-	"echo-web/middleware/opentracing"
-	"echo-web/model"
-	"echo-web/module/auth"
-	"echo-web/module/cache"
-	"echo-web/module/render"
-	"echo-web/module/session"
+	"github.com/hb-go/echo-web/assets"
+	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/module/auth"
+	"github.com/hb-go/echo-web/module/cache"
+	"github.com/hb-go/echo-web/module/render"
+	"github.com/hb-go/echo-web/module/session"
 )
 
 //---------
@@ -68,7 +68,9 @@ func Routers() *echo.Echo {
 	}))
 
 	// OpenTracing
-	e.Use(opentracing.OpenTracing("web"))
+	if !Conf.Opentracing.Disable {
+		e.Use(opentracing.OpenTracing("web"))
+	}
 
 	// 模板
 	e.Renderer = render.LoadTemplates()

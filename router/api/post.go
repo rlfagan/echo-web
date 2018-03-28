@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/echo"
 	// "github.com/jinzhu/gorm"
 
-	"echo-web/model"
+	"github.com/hb-go/echo-web/model"
 )
 
 func PostHandler(c echo.Context) error {

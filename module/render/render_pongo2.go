@@ -8,9 +8,9 @@ import (
 
 	"github.com/labstack/echo"
 
-	. "echo-web/conf"
-	"echo-web/module/log"
-	bdTmpl "echo-web/template"
+	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/module/log"
+	bdTmpl "github.com/hb-go/echo-web/template"
 )
 
 func pongo2() echo.MiddlewareFunc {

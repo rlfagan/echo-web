@@ -11,11 +11,11 @@ import (
 	mw "github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
 
-	. "echo-web/conf"
-	"echo-web/middleware/opentracing"
-	"echo-web/router/api"
-	"echo-web/router/socket"
-	"echo-web/router/web"
+	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/router/api"
+	"github.com/hb-go/echo-web/router/socket"
+	"github.com/hb-go/echo-web/router/web"
 )
 
 type (

@@ -5,9 +5,9 @@ import (
 
 	"github.com/dchest/captcha"
 
-	"echo-web/model"
-	"echo-web/module/auth"
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/module/auth"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 type LoginForm struct {

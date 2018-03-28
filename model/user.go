@@ -3,9 +3,9 @@ package model
 import (
 	"time"
 
-	"echo-web/model/orm"
-	"echo-web/module/auth"
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/model/orm"
+	"github.com/hb-go/echo-web/module/auth"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 func (u *User) TraceGetUserById(id uint64) *User {

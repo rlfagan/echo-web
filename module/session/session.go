@@ -3,9 +3,9 @@ package session
 import (
 	"github.com/labstack/echo"
 
-	es "github.com/hb-go/echo-mw/session"
+	es "github.com/hb-go/echo-web/middleware/session"
 
-	. "echo-web/conf"
+	. "github.com/hb-go/echo-web/conf"
 )
 
 func Session() echo.MiddlewareFunc {

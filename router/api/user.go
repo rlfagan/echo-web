@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 	// "github.com/jinzhu/gorm"
 
-	"echo-web/model"
+	"github.com/hb-go/echo-web/model"
 )
 
 func UserHandler(c echo.Context) error {

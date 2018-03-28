@@ -3,12 +3,12 @@ package web
 import (
 	"github.com/labstack/echo"
 
-	"github.com/hb-go/echo-mw/session"
+	"github.com/hb-go/echo-web/middleware/session"
 
 	"github.com/opentracing/opentracing-go"
 
-	"echo-web/module/auth"
-	ot "echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/module/auth"
+	ot "github.com/hb-go/echo-web/middleware/opentracing"
 )
 
 func NewContext() echo.MiddlewareFunc {

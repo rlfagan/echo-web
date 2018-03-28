@@ -8,11 +8,11 @@ import (
 	"github.com/labstack/echo"
 	// "github.com/jinzhu/gorm"
 
-	"github.com/hb-go/echo-mw/session"
+	"github.com/hb-go/echo-web/middleware/session"
 
-	"echo-web/model"
-	"echo-web/module/cache"
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/module/cache"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 func ApiHandler(c *Context) error {

@@ -3,7 +3,7 @@ package orm
 import (
 	"github.com/opentracing/opentracing-go"
 
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 type Model struct {

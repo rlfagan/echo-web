@@ -6,10 +6,10 @@ import (
 	"github.com/labstack/echo"
 	mw "github.com/labstack/echo/middleware"
 
-	. "echo-web/conf"
-	"echo-web/middleware/opentracing"
-	"echo-web/module/cache"
-	"echo-web/module/session"
+	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/module/cache"
+	"github.com/hb-go/echo-web/module/session"
 )
 
 //-----
@@ -20,7 +20,9 @@ func Routers() *echo.Echo {
 	e := echo.New()
 
 	// OpenTracing
-	e.Use(opentracing.OpenTracing("api"))
+	if !Conf.Opentracing.Disable {
+		e.Use(opentracing.OpenTracing("api"))
+	}
 
 	// Context自定义
 	e.Use(NewContext())

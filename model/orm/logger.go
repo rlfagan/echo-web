@@ -1,7 +1,7 @@
 package orm
 
 import (
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 type Logger struct {

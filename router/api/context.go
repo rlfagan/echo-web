@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/opentracing/opentracing-go"
 
-	ot "echo-web/middleware/opentracing"
+	ot "github.com/hb-go/echo-web/middleware/opentracing"
 )
 
 func NewContext() echo.MiddlewareFunc {

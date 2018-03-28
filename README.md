@@ -25,7 +25,7 @@ Go web framework Echo example.
 
 ##### 1.源码下载
 ```shell
-$ cd $GOPATH/src
+$ cd $GOPATH/src/github.com/hb-go
 $ git clone git@github.com:hb-go/echo-web.git
 ```
 

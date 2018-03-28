@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	"echo-web/module/log"
+	"github.com/hb-go/echo-web/module/log"
 )
 
 func (p *Post) GetPostById(id uint64) *Post {

@@ -3,7 +3,7 @@ package web
 import (
 	"strconv"
 
-	"echo-web/model"
+	"github.com/hb-go/echo-web/model"
 )
 
 func UserHandler(c *Context) error {

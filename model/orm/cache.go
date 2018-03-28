@@ -4,13 +4,13 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/hb-go/echo-mw/cache"
+	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/hb-go/gorm"
 
-	"echo-web/module/log"
-	"echo-web/util/conv"
-	"echo-web/util/crypt"
-	"echo-web/util/sql"
+	"github.com/hb-go/echo-web/module/log"
+	"github.com/hb-go/echo-web/util/conv"
+	"github.com/hb-go/echo-web/util/crypt"
+	"github.com/hb-go/echo-web/util/sql"
 )
 
 const (

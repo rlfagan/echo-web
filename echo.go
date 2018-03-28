@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"echo-web/module/log"
-	"echo-web/router"
+	"github.com/hb-go/echo-web/module/log"
+	"github.com/hb-go/echo-web/router"
 )
 
 var helpInfo = "help\n  -h      		帮助\n  -c conf/conf.toml	配置文件路径，默认conf/conf.toml\n"

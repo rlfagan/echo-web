@@ -10,15 +10,15 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/hb-go/echo-mw/multitemplate"
-	"github.com/hb-go/echo-mw/pongo2echo"
-	"github.com/hb-go/echo-mw/session"
+	"github.com/hb-go/echo-web/middleware/multitemplate"
+	"github.com/hb-go/echo-web/middleware/pongo2echo"
+	"github.com/hb-go/echo-web/middleware/session"
 
-	. "echo-web/conf"
-	"echo-web/model"
-	"echo-web/module/auth"
-	"echo-web/module/log"
-	MT "echo-web/template"
+	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/module/auth"
+	"github.com/hb-go/echo-web/module/log"
+	MT "github.com/hb-go/echo-web/template"
 )
 
 func Render() echo.MiddlewareFunc {

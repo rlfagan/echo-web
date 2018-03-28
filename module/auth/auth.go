@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/hb-go/echo-mw/session"
+	"github.com/hb-go/echo-web/middleware/session"
 	"github.com/labstack/echo"
 )
 

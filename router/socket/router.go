@@ -4,11 +4,11 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"echo-web/model"
-	"echo-web/module/auth"
-	"echo-web/module/cache"
-	"echo-web/module/render"
-	"echo-web/module/session"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/module/auth"
+	"github.com/hb-go/echo-web/module/cache"
+	"github.com/hb-go/echo-web/module/render"
+	"github.com/hb-go/echo-web/module/session"
 )
 
 func Routers() *echo.Echo {

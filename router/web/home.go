@@ -6,10 +6,10 @@ import (
 
 	"github.com/opentracing/opentracing-go"
 
-	"echo-web/model"
-	"echo-web/model/orm"
-	"echo-web/module/log"
-	. "echo-web/conf"
+	"github.com/hb-go/echo-web/model"
+	"github.com/hb-go/echo-web/model/orm"
+	"github.com/hb-go/echo-web/module/log"
+	. "github.com/hb-go/echo-web/conf"
 )
 
 func HomeHandler(c *Context) error {
