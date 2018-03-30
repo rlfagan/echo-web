@@ -43,7 +43,7 @@ func NewRedisStore(size int, network, address, password string, keyPairs ...[]by
 
 	store, err := redistore.NewRediStoreWithPool(&redis.Pool{
 		MaxIdle:     size,
-		MaxActive:   50,
+		MaxActive:   512,
 		Wait:        true,
 		IdleTimeout: 3 * time.Second,
 		TestOnBorrow: func(c redis.Conn, t time.Time) error {
