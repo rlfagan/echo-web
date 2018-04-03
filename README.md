@@ -25,7 +25,7 @@ Go web framework Echo example.
 
 ##### 1.源码下载
 ```shell
-$ go get ithub.com:hb-go/echo-web
+$ go get github.com:hb-go/echo-web
 ```
 
 ##### 2.依赖安装
