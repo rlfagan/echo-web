@@ -1,7 +1,5 @@
 # Echo Web
 Go web framework Echo example. 
-> Echo middleware [echo-mw](https://github.com/hb-go/echo-mw)
-
 > Echo中文文档 [go-echo.org](http://go-echo.org/)
 
 > Requires
