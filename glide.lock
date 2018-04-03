@@ -1,12 +1,12 @@
-hash: e1c2708a31b3a4feb75774afa3f5d59b7bb69792066dd1a2a42224fe17ecdc54
-updated: 2018-02-08T16:31:25.615367+08:00
+hash: 66b3cb7d4acb330ba1269a2084f4e425295b2e51d18ac1c768f7d28249662f7c
+updated: 2018-04-03T12:29:29.94209+08:00
 imports:
 - name: github.com/apache/thrift
   version: b2a4d4ae21c789b689dd162deb819665567f481c
   subpackages:
   - lib/go/thrift
 - name: github.com/boj/redistore
-  version: 4562487a4bee9a7c272b72bfaeda4917d0a47ab9
+  version: fc113767cd6b051980f260d6dbe84b2740c46ab0
 - name: github.com/bradfitz/gomemcache
   version: 1952afaa557dc08e8e0d89eafab110fb501c1a2b
   subpackages:
@@ -18,11 +18,11 @@ imports:
 - name: github.com/dchest/captcha
   version: 6a29415a8364ec2971fdc62d9e415ed53fc20410
 - name: github.com/dgrijalva/jwt-go
-  version: dbeaa9332f19a944acb5736b4456cfcc02140e29
+  version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
 - name: github.com/flosch/pongo2
-  version: 1f4be1efe3b3529b7e58861f75d70120a9567dc4
+  version: 97eac295f74b5fbb7fd3113e35f4ccf3c816e389
 - name: github.com/garyburd/redigo
-  version: d1ed5c67e5794de818ea85e6b522fda02623a484
+  version: a69d19351219b6dd56f274f96d85a7014a2ec34e
   subpackages:
   - internal
   - redis
@@ -40,18 +40,9 @@ imports:
 - name: github.com/gorilla/securecookie
   version: e59506cc896acb7f7bf732d4fdf5e25f7ccd8983
 - name: github.com/gorilla/sessions
-  version: 41ee504a3bfe9b07b2d62ba5cc2e1314cabb4a63
-- name: github.com/hb-go/echo-mw
-  version: 7dddcfaae4c2549a62ad9d469db7642606134919
-  subpackages:
-  - cache
-  - captcha
-  - multitemplate
-  - pongo2echo
-  - session
-  - staticbin
+  version: ca9ada44574153444b00d3fd9c8559e4cc95f896
 - name: github.com/hb-go/gorm
-  version: 5e668cba41035839edb0123e4fd488a3cfd22f35
+  version: 3683d88e97a6412893579c273037e9f177551515
 - name: github.com/hb-go/json
   version: 15ef86c8b7968703d415495b2d63edfaaa25d44d
 - name: github.com/jinzhu/inflection
@@ -59,11 +50,11 @@ imports:
 - name: github.com/juju/errors
   version: c7d06af17c68cd34c835053720b21f6549d9b0ee
 - name: github.com/labstack/echo
-  version: b338075a0fc6e1a0683dbf03d09b4957a289e26f
+  version: a5d81b8d4a627f3f49dcb3164ef2bb5239682227
   subpackages:
   - middleware
 - name: github.com/labstack/gommon
-  version: 57409ada9da0f2afad6664c49502f8c50fbd8476
+  version: 6fe1405d73ec4bd4cd8a4ac8e2a2b2bf95d03954
   subpackages:
   - bytes
   - color
@@ -84,18 +75,14 @@ imports:
   - log
 - name: github.com/robfig/go-cache
   version: 9fc39e0dbf62c034ec4e45e6120fc69433a3ec51
-- name: github.com/sourcegraph/appdash
-  version: 2cc67fd647551af94593ecaaa89fe4e5b2940a3e
-  subpackages:
-  - opentracing
-  - traceapp
 - name: github.com/uber/jaeger-client-go
-  version: 3ac96c6e679cb60a74589b0d0aa7c70a906183f7
+  version: c107110d057826281414cb964f167bce5be17588
   subpackages:
   - config
   - internal/baggage
   - internal/baggage/remote
   - internal/spanlog
+  - internal/throttler
   - log
   - rpcmetrics
   - thrift-gen/agent
@@ -105,13 +92,27 @@ imports:
   - thrift-gen/zipkincore
   - utils
 - name: github.com/uber/jaeger-lib
-  version: 7f95f4f7e80028096410abddaae2556e4c61b59f
+  version: 4267858c0679cd4e47cefed8d7f70fd386cfb567
   subpackages:
   - metrics
 - name: github.com/valyala/bytebufferpool
   version: e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7
 - name: github.com/valyala/fasttemplate
   version: dcecefd839c4193db0d35b88ec65b4c12d360ab0
+- name: golang.org/x/crypto
+  version: 12892e8c234f4fe6f6803f052061de9057903bb2
+  subpackages:
+  - acme
+  - acme/autocert
+- name: golang.org/x/net
+  version: b68f30494add4df6bd8ef5e82803f308e7f7c59c
+  subpackages:
+  - context
+  - websocket
+- name: golang.org/x/sys
+  version: 37707fdb30a5b38865cfb95e5aab41707daec7fd
+  subpackages:
+  - unix
 - name: sourcegraph.com/sourcegraph/appdash
   version: 2cc67fd647551af94593ecaaa89fe4e5b2940a3e
   subpackages:

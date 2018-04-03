@@ -25,23 +25,22 @@ Go web framework Echo example.
 
 ##### 1.源码下载
 ```shell
-$ cd $GOPATH/src/github.com/hb-go
-$ git clone git@github.com:hb-go/echo-web.git
+$ go get ithub.com:hb-go/echo-web
 ```
 
 ##### 2.依赖安装
-> golang.org依赖需要自己手动处理
-
 > [glide工具安装](https://github.com/Masterminds/glide#install)
-```shell
-$ cd echo_web/
-$ glide install
-```
 
-> [dep工具安装](https://github.com/golang/dep#usage)
+> .glide/mirrors.yaml[设置参考](glide.mirrors.yaml)
 ```shell
-$ cd echo_web/
-$ dep ensure
+# 编辑mirrors.yaml，或命令行glide mirror set [original] [replacement] --vcs [type]
+$ vi ~/.glide/mirrors.yaml
+
+# 查看glide mirror
+$ glide mirror list
+
+$ cd $GOPATH/src/github.com/hb-go
+$ glide install
 ```
 
 ##### 3.MySQL配置

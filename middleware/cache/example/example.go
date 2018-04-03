@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/hobo-go/echo-mw/cache"
+	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/labstack/echo"
 	"time"
 )
