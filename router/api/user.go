@@ -36,7 +36,7 @@ func UserHandler(c echo.Context) error {
 
 func UserLoginHandler(c echo.Context) error {
 
-	t, err := getJETToken()
+	t, err := getJWTToken()
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func UserRegisterHandler(c echo.Context) error {
 	return nil
 }
 
-func getJETToken() (t string, e error) {
+func getJWTToken() (t string, e error) {
 	// Create token
 	token := jwt.New(jwt.SigningMethodHS256)
 

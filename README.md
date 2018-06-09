@@ -182,6 +182,11 @@ util            公共工具
 
 ## Supervisord部署
 ```bash
+# Max open files问题，修改supervisord配置
+$ vi /etc/supervisor/supervisord.conf
+[supervisord]
+minfds = 10240
+
 $ vi /etc/supervisor/conf.d/echo-web.conf
 ```
 

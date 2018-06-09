@@ -73,8 +73,8 @@ func ApiHandler(c *Context) error {
 	return nil
 }
 
-func JETTesterHandler(c echo.Context) error {
-	t, err := getJETToken()
+func JWTTesterHandler(c echo.Context) error {
+	t, err := getJWTToken()
 	if err != nil {
 		return err
 	}
