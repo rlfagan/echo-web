@@ -41,7 +41,7 @@ rm -rf pkg/*
 echo -e "$LogPrefix `date +"%H:%M:%S"` [\033[42;37m run \033[0m] server"
 
 # 使用默认配置
-go run echo.go
+GOGC=1000 go run echo.go
 
 # 指定配置文件
 # go run echo.go -c conf/conf.toml
