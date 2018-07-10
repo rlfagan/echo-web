@@ -53,8 +53,6 @@ func Routers() *echo.Echo {
 
 	e.Static("/favicon.ico", "./assets/img/favicon.ico")
 
-
-
 	// Cache
 	e.Use(cache.Cache())
 

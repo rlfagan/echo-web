@@ -93,6 +93,8 @@ func Routers() *echo.Echo {
 	e.POST("/login", handler(LoginPostHandler))
 	e.POST("/register", handler(RegisterPostHandler))
 
+	e.GET("/dashboard", DashboardHandler)
+
 	e.GET("/jwt/tester", handler(JWTTesterHandler))
 	e.GET("/ws", handler(WsHandler))
 
