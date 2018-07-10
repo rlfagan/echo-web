@@ -18,6 +18,7 @@ Go web framework Echo example.
 - [Confd管理配置](#confd%e7%ae%a1%e7%90%86%e9%85%8d%e7%bd%ae)
 - [OpenTracing](#opentracing)
 - [Docker部署](#docker%e9%83%a8%e7%bd%b2)
+- [pprof](#pprof)
 
 ## 环境配置
 
@@ -289,5 +290,20 @@ $ vi ~/.profile
 grep -v "etcd.localhost.com\|consul.localhost.com\|mysql.localhost.com\|redis.localhost.com\|memcached.localhost.com" /etc/hosts > ~/hosts_temp
 cat ~/hosts_temp > /etc/hosts
 LC_ALL=C ifconfig en0 | grep 'inet ' | cut -d ' ' -f2 | awk '{print $1 " etcd.localhost.com\n" $1 " consul.localhost.com\n" $1 " mysql.localhost.com\n"$1     " redis.localhost.com\n" $1 " memcached.localhost.com"}' >> /etc/hosts
+```
+
+## pprof
+[Profiling Go Programs](https://blog.golang.org/profiling-go-programs)
+```go
+import "github.com/hb-go/echo-web/middleware/pprof"
+
+echo.Pre(pprof.Serve())
+/*或*/
+echo.Use(pprof.Serve())
+```
+Web浏览prof信息
+http://{HOST}/debug/pprof/
+```bash
+$ go tool pprof http://{HOST}/debug/pprof/{profile}
 ```
 

@@ -13,6 +13,7 @@ import (
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/middleware/pprof"
 	"github.com/hb-go/echo-web/router/api"
 	"github.com/hb-go/echo-web/router/socket"
 	"github.com/hb-go/echo-web/router/web"
@@ -47,6 +48,10 @@ func RunSubdomains(confFilePath string) {
 
 	// Server
 	e := echo.New()
+
+	// pprof
+	e.Pre(pprof.Serve())
+
 	e.Pre(mw.RemoveTrailingSlash())
 
 	// OpenTracing
