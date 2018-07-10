@@ -210,6 +210,7 @@ stdout_logfile = /var/log/echo-web/stdout.log
 ; 这一配置项的作用是：如果supervisord管理的进程px又产生了若干子进程，使用supervisorctl停止px进程，停止信号会传播给px产生的所有子进程，确保子进程也一起停止。这一配置项对希望停止所有进程的需求是非常有用的。
 stopasgroup=false
 killasgroup=false
+environment=GOGC=1000
 ```
 
 ## Confd管理配置
