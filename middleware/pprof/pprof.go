@@ -1,8 +1,9 @@
 package pprof
 
 import (
+	"net/http"
+	_ "net/http/pprof"
 	"strings"
-	"net/http/pprof"
 
 	"github.com/labstack/echo"
 )
@@ -14,7 +15,7 @@ func Serve() echo.MiddlewareFunc {
 		return func(c echo.Context) error {
 			path := c.Request().URL.Path
 			if strings.HasPrefix(path, "/debug/pprof/") {
-				pprof.Index(c.Response(), c.Request())
+				http.DefaultServeMux.ServeHTTP(c.Response(), c.Request())
 			} else {
 				return next(c)
 			}
