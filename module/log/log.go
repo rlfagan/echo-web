@@ -26,6 +26,11 @@ func init() {
 	global.SetLevel(l.DEBUG)
 }
 
+func SetLevel(v l.Lvl) {
+	l.SetLevel(v)
+	global.SetLevel(v)
+}
+
 func Debug(i ...interface{}) {
 	global.Debug(i)
 }
@@ -64,4 +69,12 @@ func Fatal(i ...interface{}) {
 
 func Fatalf(format string, values ...interface{}) {
 	global.Fatalf(format, values...)
+}
+
+func Panic(i ...interface{}) {
+	global.Panic(i)
+}
+
+func Panicf(format string, args ...interface{}) {
+	global.Panicf(format, args)
 }

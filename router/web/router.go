@@ -34,6 +34,17 @@ func Routers() *echo.Echo {
 	e.Logger.SetPrefix("web")
 	e.Logger.SetLevel(GetLogLvl())
 
+	// 静态资源
+	switch Conf.Static.Type {
+	case BINDATA:
+		e.Use(staticbin.Static(assets.Asset, staticbin.Options{
+			Dir:         "/",
+			SkipLogging: true,
+		}))
+	default:
+		e.Static("/assets", "./assets")
+	}
+
 	// Session
 	e.Use(session.Session())
 
@@ -52,17 +63,6 @@ func Routers() *echo.Echo {
 		CaptchaPath: "/captcha/",
 		SkipLogging: true,
 	}))
-
-	// 静态资源
-	switch Conf.Static.Type {
-	case BINDATA:
-		e.Use(staticbin.Static(assets.Asset, staticbin.Options{
-			Dir:         "/",
-			SkipLogging: true,
-		}))
-	default:
-		e.Static("/assets", "./assets")
-	}
 
 	// Gzip，在验证码、静态资源之后
 	// 验证码、静态资源使用http.ServeContent()，与Gzip有冲突，Nginx报错，验证码无法访问

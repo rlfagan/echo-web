@@ -8,15 +8,25 @@ package session
 
 import (
 	"net/http"
+	"sync"
 
-	"github.com/labstack/gommon/log"
+	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo"
+	"github.com/labstack/gommon/log"
 )
 
 const (
 	DefaultKey  = "github.com/syntaqx/echo-middleware/session"
 	errorFormat = "[sessions] ERROR! %s\n"
+)
+
+var (
+	sessionPool = sync.Pool{
+		New: func() interface{} {
+			return &session{}
+		},
+	}
 )
 
 type Store interface {
@@ -68,17 +78,23 @@ func New(name string, store Store) echo.MiddlewareFunc {
 			request := c.Request()
 			response := c.Response()
 
-			s := &session{
-				name,
-				request,
-				store,
-				nil,
-				false,
-				response,
-			}
+			s := sessionPool.Get().(*session)
+			defer func() {
+				s.reset()
+				sessionPool.Put(s)
+
+				// gorilla/context 需要清理
+				context.Clear(request)
+			}()
+
+			s.name = name
+			s.request = request
+			s.store = store
+			s.session = nil
+			s.written = false
+			s.writer = response
 
 			c.Set(DefaultKey, s)
-
 			return next(c)
 		}
 	}
@@ -91,6 +107,16 @@ type session struct {
 	session *sessions.Session
 	written bool
 	writer  http.ResponseWriter
+}
+
+func (s *session) reset() {
+
+	s.name = ""
+	s.request = nil
+	s.store = nil
+	s.session = nil
+	s.written = false
+	s.writer = nil
 }
 
 func (s *session) Get(key interface{}) interface{} {

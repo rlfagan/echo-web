@@ -1,9 +1,9 @@
 package web
 
 import (
-	"time"
-	"runtime"
 	"fmt"
+	"runtime"
+	"time"
 
 	"github.com/labstack/echo"
 
@@ -99,8 +99,8 @@ func updateSystemStatus() {
 	sysStatus.OtherSys = conv.FileSize(int64(m.OtherSys))
 
 	sysStatus.NextGC = conv.FileSize(int64(m.NextGC))
-	sysStatus.LastGC = fmt.Sprintf("%.1fs", float64(time.Now().UnixNano()-int64(m.LastGC))/1000/1000/1000)
-	sysStatus.PauseTotalNs = fmt.Sprintf("%.1fs", float64(m.PauseTotalNs)/1000/1000/1000)
-	sysStatus.PauseNs = fmt.Sprintf("%.3fs", float64(m.PauseNs[(m.NumGC+255)%256])/1000/1000/1000)
+	sysStatus.LastGC = fmt.Sprintf("%.3fs", float64(time.Now().UnixNano()-int64(m.LastGC))/1000/1000/1000)
+	sysStatus.PauseTotalNs = fmt.Sprintf("%.3fs", float64(m.PauseTotalNs)/1000/1000/1000)
+	sysStatus.PauseNs = fmt.Sprintf("%.6fs", float64(m.PauseNs[(m.NumGC+255)%256])/1000/1000/1000)
 	sysStatus.NumGC = m.NumGC
 }

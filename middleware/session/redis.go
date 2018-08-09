@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/boj/redistore"
-	"github.com/gorilla/sessions"
 	"github.com/garyburd/redigo/redis"
+	"github.com/gorilla/sessions"
 )
 
 type RedisStore interface {

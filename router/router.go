@@ -9,11 +9,11 @@ import (
 
 	"github.com/labstack/echo"
 	mw "github.com/labstack/echo/middleware"
-	"github.com/labstack/gommon/log"
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/opentracing"
 	"github.com/hb-go/echo-web/middleware/pprof"
+	"github.com/hb-go/echo-web/module/log"
 	"github.com/hb-go/echo-web/router/api"
 	"github.com/hb-go/echo-web/router/socket"
 	"github.com/hb-go/echo-web/router/web"
@@ -71,7 +71,7 @@ func RunSubdomains(confFilePath string) {
 
 	// Secure, XSS/CSS HSTS
 	e.Use(mw.SecureWithConfig(mw.DefaultSecureConfig))
-	mw.MethodOverride()
+	e.Use(mw.MethodOverride())
 
 	// CORS
 	e.Use(mw.CORSWithConfig(mw.CORSConfig{

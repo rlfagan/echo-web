@@ -8,8 +8,6 @@ import (
 	"github.com/labstack/echo"
 	// "github.com/jinzhu/gorm"
 
-	"github.com/hb-go/echo-web/middleware/session"
-
 	"github.com/hb-go/echo-web/model"
 	"github.com/hb-go/echo-web/module/cache"
 	"github.com/hb-go/echo-web/module/log"
@@ -41,33 +39,22 @@ func ApiHandler(c *Context) error {
 		}
 	}
 
-	// Flash测试
-	s := session.Default(c)
-	s.AddFlash("0")
-	s.AddFlash("1")
-	s.AddFlash("10", "key1")
-	s.AddFlash("20", "key2")
-	s.AddFlash("21", "key2")
-
 	request := c.Request()
 	c.AutoFMT(http.StatusOK, map[string]interface{}{
-		"title":        "Api Index",
-		"User":         u,
-		"CacheValue":   value,
-		"URL":          request.URL,
-		"Scheme":       request.URL.Scheme,
-		"Host":         request.Host,
-		"UserAgent":    request.UserAgent(),
-		"Method":       request.Method,
-		"URI":          request.RequestURI,
-		"RemoteAddr":   request.RemoteAddr,
-		"Path":         request.URL.Path,
-		"QueryString":  request.URL.RawQuery,
-		"QueryParams":  request.URL.Query(),
-		"HeaderKeys":   request.Header,
-		"FlashDefault": s.Flashes(),
-		"Flash1":       s.Flashes("key1"),
-		"Flash2":       s.Flashes("key2"),
+		"title":       "Api Index",
+		"User":        u,
+		"CacheValue":  value,
+		"URL":         request.URL,
+		"Scheme":      request.URL.Scheme,
+		"Host":        request.Host,
+		"UserAgent":   request.UserAgent(),
+		"Method":      request.Method,
+		"URI":         request.RequestURI,
+		"RemoteAddr":  request.RemoteAddr,
+		"Path":        request.URL.Path,
+		"QueryString": request.URL.RawQuery,
+		"QueryParams": request.URL.Query(),
+		"HeaderKeys":  request.Header,
 	})
 
 	return nil
