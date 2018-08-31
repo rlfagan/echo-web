@@ -175,7 +175,7 @@ util            公共工具
 [Session](https://github.com/hb-go/echo-web/blob/master/module/session) | Redis、File、Cookie，支持Flash
 [ORM](https://github.com/hb-go/echo-web/tree/master/model) | Fork [gorm](http://github.com/jinzhu/gorm)，`FirstSQL`、`LastSQL`、`FindSQL`、`CountSQL`支持构造查询SQL
 [查询缓存](https://github.com/hb-go/echo-web/tree/master/model/orm) | 支持`First`、`Last`、`Find`、`Count`的查询缓存
-[模板](https://github.com/hb-go/echo-web/tree/master/module/render) | 支持html/template、[pongo2](http://github.com/flosch/pongo2)，模板支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
+[模板](https://github.com/hb-go/echo-web/tree/master/module/render) | 支持html/template(~~示例模板未维护~~)、[pongo2](http://github.com/flosch/pongo2)，模板支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 静态 | 静态资源，支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 安全 | CORS、CSRF、XSS、HSTS、验证码等
 [OpenTracing](http://opentracing.io/) | Tracer支持Jaeger、Appdash，在Request、ORM层做跟踪，可在conf配置开启)
