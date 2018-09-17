@@ -261,7 +261,8 @@ docker run -d --name graphite --restart=always -p 8090:80 -p 2003-2004:2003-2004
 # Grafana 浏览器:localhost:3000
 docker run --name grafana -d -p 3000:3000 grafana/grafana
 
-# grafana_graphite.json
+# Dashboard JSON
+# middleware/metrics/grafana_graphite.json
 ```
 
 ## Docker部署
