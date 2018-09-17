@@ -1,5 +1,6 @@
 package: github.com/hb-go/echo-web
 import:
+- package: google.golang.org/appengine
 - package: github.com/BurntSushi/toml
   version: ^0.3.0
 - package: github.com/boj/redistore
@@ -50,3 +51,6 @@ import:
   - opentracing
   - traceapp
 - package: github.com/juju/errors
+- package: github.com/gorilla/context
+  version: ^1.1.1
+- package: github.com/rcrowley/go-metrics

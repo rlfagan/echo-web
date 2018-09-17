@@ -3,12 +3,12 @@
 // template/40x.tmpl
 // template/50x.tmpl
 // template/include/base.html
-// template/layout/www/about.html
-// template/layout/www/home.html
-// template/layout/www/index.html
-// template/layout/www/login.html
-// template/layout/www/register.html
-// template/layout/www/user.html
+// template/layout/web/about.html
+// template/layout/web/home.html
+// template/layout/web/index.html
+// template/layout/web/login.html
+// template/layout/web/register.html
+// template/layout/web/user.html
 // template/layout.tmpl
 // template/pongo2/base.html
 // template/pongo2/web/about.html
@@ -100,10 +100,10 @@ func templateIncludeBaseHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwAboutHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwAboutHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/about.html"
-	name := "template/layout/www/about.html"
+// templateLayoutWebAboutHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebAboutHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/about.html"
+	name := "template/layout/web/about.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -118,10 +118,10 @@ func templateLayoutWwwAboutHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwHomeHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwHomeHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/home.html"
-	name := "template/layout/www/home.html"
+// templateLayoutWebHomeHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebHomeHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/home.html"
+	name := "template/layout/web/home.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -136,10 +136,10 @@ func templateLayoutWwwHomeHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwIndexHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwIndexHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/index.html"
-	name := "template/layout/www/index.html"
+// templateLayoutWebIndexHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebIndexHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/index.html"
+	name := "template/layout/web/index.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -154,10 +154,10 @@ func templateLayoutWwwIndexHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwLoginHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwLoginHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/login.html"
-	name := "template/layout/www/login.html"
+// templateLayoutWebLoginHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebLoginHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/login.html"
+	name := "template/layout/web/login.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -172,10 +172,10 @@ func templateLayoutWwwLoginHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwRegisterHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwRegisterHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/register.html"
-	name := "template/layout/www/register.html"
+// templateLayoutWebRegisterHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebRegisterHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/register.html"
+	name := "template/layout/web/register.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -190,10 +190,10 @@ func templateLayoutWwwRegisterHtml() (*asset, error) {
 	return a, err
 }
 
-// templateLayoutWwwUserHtml reads file data from disk. It returns an error on failure.
-func templateLayoutWwwUserHtml() (*asset, error) {
-	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/www/user.html"
-	name := "template/layout/www/user.html"
+// templateLayoutWebUserHtml reads file data from disk. It returns an error on failure.
+func templateLayoutWebUserHtml() (*asset, error) {
+	path := "/Users/Steven/Develop/Go/project/src/github.com/hb-go/echo-web/template/layout/web/user.html"
+	name := "template/layout/web/user.html"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -461,12 +461,12 @@ var _bindata = map[string]func() (*asset, error){
 	"template/40x.tmpl": template40xTmpl,
 	"template/50x.tmpl": template50xTmpl,
 	"template/include/base.html": templateIncludeBaseHtml,
-	"template/layout/www/about.html": templateLayoutWwwAboutHtml,
-	"template/layout/www/home.html": templateLayoutWwwHomeHtml,
-	"template/layout/www/index.html": templateLayoutWwwIndexHtml,
-	"template/layout/www/login.html": templateLayoutWwwLoginHtml,
-	"template/layout/www/register.html": templateLayoutWwwRegisterHtml,
-	"template/layout/www/user.html": templateLayoutWwwUserHtml,
+	"template/layout/web/about.html": templateLayoutWebAboutHtml,
+	"template/layout/web/home.html": templateLayoutWebHomeHtml,
+	"template/layout/web/index.html": templateLayoutWebIndexHtml,
+	"template/layout/web/login.html": templateLayoutWebLoginHtml,
+	"template/layout/web/register.html": templateLayoutWebRegisterHtml,
+	"template/layout/web/user.html": templateLayoutWebUserHtml,
 	"template/layout.tmpl": templateLayoutTmpl,
 	"template/pongo2/base.html": templatePongo2BaseHtml,
 	"template/pongo2/web/about.html": templatePongo2WebAboutHtml,
@@ -527,13 +527,13 @@ var _bintree = &bintree{nil, map[string]*bintree{
 			"base.html": &bintree{templateIncludeBaseHtml, map[string]*bintree{}},
 		}},
 		"layout": &bintree{nil, map[string]*bintree{
-			"www": &bintree{nil, map[string]*bintree{
-				"about.html": &bintree{templateLayoutWwwAboutHtml, map[string]*bintree{}},
-				"home.html": &bintree{templateLayoutWwwHomeHtml, map[string]*bintree{}},
-				"index.html": &bintree{templateLayoutWwwIndexHtml, map[string]*bintree{}},
-				"login.html": &bintree{templateLayoutWwwLoginHtml, map[string]*bintree{}},
-				"register.html": &bintree{templateLayoutWwwRegisterHtml, map[string]*bintree{}},
-				"user.html": &bintree{templateLayoutWwwUserHtml, map[string]*bintree{}},
+			"web": &bintree{nil, map[string]*bintree{
+				"about.html": &bintree{templateLayoutWebAboutHtml, map[string]*bintree{}},
+				"home.html": &bintree{templateLayoutWebHomeHtml, map[string]*bintree{}},
+				"index.html": &bintree{templateLayoutWebIndexHtml, map[string]*bintree{}},
+				"login.html": &bintree{templateLayoutWebLoginHtml, map[string]*bintree{}},
+				"register.html": &bintree{templateLayoutWebRegisterHtml, map[string]*bintree{}},
+				"user.html": &bintree{templateLayoutWebUserHtml, map[string]*bintree{}},
 			}},
 		}},
 		"layout.tmpl": &bintree{templateLayoutTmpl, map[string]*bintree{}},

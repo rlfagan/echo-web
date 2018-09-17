@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/BurntSushi/toml"
 	"github.com/labstack/gommon/log"
@@ -43,6 +44,9 @@ type config struct {
 
 	// Opentracing
 	Opentracing opentracing
+
+	// Metrics
+	Metrics metrics
 }
 
 type app struct {
@@ -91,6 +95,12 @@ type opentracing struct {
 	Type        string `toml:"type"`
 	ServiceName string `toml:"service_name"`
 	Address     string `toml:"address"`
+}
+
+type metrics struct {
+	Disable bool          `toml:"disable"`
+	FreqSec time.Duration `toml:"freq_sec"`
+	Address string        `toml:"address"`
 }
 
 func init() {

@@ -2,6 +2,7 @@ package router
 
 import (
 	"context"
+	"net"
 	"net/url"
 	"os"
 	"os/signal"
@@ -11,6 +12,7 @@ import (
 	mw "github.com/labstack/echo/middleware"
 
 	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/metrics"
 	"github.com/hb-go/echo-web/middleware/opentracing"
 	"github.com/hb-go/echo-web/middleware/pprof"
 	"github.com/hb-go/echo-web/module/log"
@@ -68,6 +70,20 @@ func RunSubdomains(confFilePath string) {
 
 	// 日志级别
 	e.Logger.SetLevel(GetLogLvl())
+
+	// Metrics
+	if !Conf.Metrics.Disable {
+		m := metrics.NewMetrics(metrics.Prefix(""))
+		e.Use(metrics.MetricsFunc(m))
+		m.MemStats()
+		host, err := os.Hostname()
+		if err != nil {
+			log.Warnf("os.Hostname() error:%v", err)
+			host = "-"
+		}
+		addr, _ := net.ResolveTCPAddr("tcp", Conf.Metrics.Address)
+		m.Graphite(Conf.Metrics.FreqSec*time.Second, "echo-web.host."+host, addr)
+	}
 
 	// Secure, XSS/CSS HSTS
 	e.Use(mw.SecureWithConfig(mw.DefaultSecureConfig))

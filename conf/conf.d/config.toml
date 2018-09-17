@@ -32,4 +32,7 @@ keys = [
     "/opentracing/type",
     "/opentracing/service_name",
     "/opentracing/address",
+    "/metrics/disable",
+    "/metrics/freq_sec",
+    "/metrics/address",
 ]

@@ -179,6 +179,7 @@ util            公共工具
 静态 | 静态资源，支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 安全 | CORS、CSRF、XSS、HSTS、验证码等
 [OpenTracing](http://opentracing.io/) | Tracer支持Jaeger、Appdash，在Request、ORM层做跟踪，可在conf配置开启)
+监控 | `Graphite` ~~InfluxDB~~ `Grafana`
 其他 | JWT、Socket演示
 
 ## Supervisord部署
@@ -233,7 +234,7 @@ $ confd -onetime -confdir conf  -backend etcd -node http://127.0.0.1:4001 -prefi
 ```
 
 ## OpenTracing
-> 可在conf.toml开启或禁用
+> 在conf.toml开启或禁用
 - Appdash可直接使用，查看[http://localhost:8700](http://localhost:8700)
 - Jaeger需要搭建服务，可在[Docker搭建开发环境](http://jaeger.readthedocs.io/en/latest/getting_started/#all-in-one-docker-image)，查看[http://localhost:16686](http://localhost:16686)
 ```bash
@@ -249,6 +250,18 @@ service_name = "echo-web"
 # jaeger-agent 127.0.0.1:6831
 # appdash http://localhost:8700
 address = "127.0.0.1:6831"
+```
+
+## Metrics
+> 在conf.toml开启或禁用
+```sh
+# Graphite 浏览器:localhost:8090， 登录账户名:root，密码:root
+docker run -d --name graphite --restart=always -p 8090:80 -p 2003-2004:2003-2004 -p 2023-2024:2023-2024 -p 8125:8125/udp -p 8126:8126 hopsoft/graphite-statsd
+
+# Grafana 浏览器:localhost:3000
+docker run --name grafana -d -p 3000:3000 grafana/grafana
+
+# grafana_graphite.json
 ```
 
 ## Docker部署
