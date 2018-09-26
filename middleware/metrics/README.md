@@ -17,7 +17,8 @@ docker run -d --name prometheus -p 9090:9090 -v ~/tmp/prometheus.yml:/etc/promet
 ```
 
 配置文件~/tmp/prometheus.yml
-> Docker内网络需要能访问到域名:echo.www.localhost.com，可以在/etc/hosts将域名映射到主机IP，可以参考README.md[自动修改/etch/osts映射自定义域名到主机ip](/README.md#%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9etchosts%E6%98%A0%E5%B0%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%88%B0%E4%B8%BB%E6%9C%BAip)
+> Docker内网络需要能访问到域名:echo.www.localhost.com
+> 可以在/etc/hosts将域名映射到主机IP，可以参考README.md [自动修改/etch/osts映射自定义域名到主机ip](/README.md#%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9etchosts%E6%98%A0%E5%B0%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%88%B0%E4%B8%BB%E6%9C%BAip)
 ```bash
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
