@@ -1,6 +1,10 @@
-hash: 0eb30e32ef0d324c77ec941f5a6b770315467903afcd0a8cd6e5a629e27e57dc
-updated: 2018-09-17T21:06:33.219996+08:00
+hash: 098c8df3978b8a84dd05da9d7dd6956db9a4174cd3546c4f0b54f4f07962a72d
+updated: 2018-09-26T21:45:17.732983+08:00
 imports:
+- name: github.com/beorn7/perks
+  version: 3a771d992973f24aa725d07868b467d1ddfceafb
+  subpackages:
+  - quantile
 - name: github.com/boj/redistore
   version: fc113767cd6b051980f260d6dbe84b2740c46ab0
 - name: github.com/bradfitz/gomemcache
@@ -8,11 +12,13 @@ imports:
   subpackages:
   - memcache
 - name: github.com/BurntSushi/toml
-  version: b26d9c308763d68093482582cea63d69be07a0f0
+  version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
 - name: github.com/codahale/hdrhistogram
   version: 3a0bb77429bd3a61596f5e8a3172445844342120
 - name: github.com/dchest/captcha
   version: 6a29415a8364ec2971fdc62d9e415ed53fc20410
+- name: github.com/deathowl/go-metrics-prometheus
+  version: 091131e49c335a452af504b8104ac262da41a6e9
 - name: github.com/dgrijalva/jwt-go
   version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
 - name: github.com/flosch/pongo2
@@ -29,6 +35,10 @@ imports:
   subpackages:
   - io
   - proto
+- name: github.com/golang/protobuf
+  version: b4deda0973fb4c70b50d226b1af49f3da59f5265
+  subpackages:
+  - proto
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
@@ -41,6 +51,12 @@ imports:
   version: 3683d88e97a6412893579c273037e9f177551515
 - name: github.com/hb-go/json
   version: 15ef86c8b7968703d415495b2d63edfaaa25d44d
+- name: github.com/influxdata/influxdb
+  version: 5ec7b901bbcb2be9d94a1b87504cc0fc1d25e9c8
+  subpackages:
+  - client
+  - models
+  - pkg/escape
 - name: github.com/jinzhu/inflection
   version: 04140366298a54a039076d798123ffa108fff46c
 - name: github.com/juju/errors
@@ -60,6 +76,10 @@ imports:
   version: efa589957cd060542a26d2dd7832fd6a6c6c3ade
 - name: github.com/mattn/go-isatty
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: 3247c84500bff8d9fb6d579d800f20b3e091582c
+  subpackages:
+  - pbutil
 - name: github.com/opentracing/basictracer-go
   version: 98b91394c2def4a44acff5e100538b4812f2f694
   subpackages:
@@ -71,6 +91,27 @@ imports:
   - log
 - name: github.com/pkg/errors
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
+- name: github.com/prometheus/client_golang
+  version: 967789050ba94deca04a5e84cce8ad472ce313c1
+  subpackages:
+  - prometheus
+  - prometheus/promhttp
+- name: github.com/prometheus/client_model
+  version: 5c3871d89910bfb32f5fcab2aa4b9ec68e65a99f
+  subpackages:
+  - go
+- name: github.com/prometheus/common
+  version: e4aa40a9169a88835b849a6efb71e05dc04b88f0
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: 54d17b57dd7d4a3aa092476596b3f8a933bde349
+  subpackages:
+  - internal/util
+  - nfs
+  - xfs
 - name: github.com/rcrowley/go-metrics
   version: e2704e165165ec55d062f5919b4b29494e9fa790
 - name: github.com/robfig/go-cache
@@ -101,6 +142,8 @@ imports:
   version: e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7
 - name: github.com/valyala/fasttemplate
   version: dcecefd839c4193db0d35b88ec65b4c12d360ab0
+- name: github.com/vrischmann/go-metrics-influxdb
+  version: 43af8332c303f62ef62663b02b3b7d8a9802002a
 - name: golang.org/x/crypto
   version: 2d027ae1dddd4694d54f7a8b6cbe78dca8720226
   subpackages:

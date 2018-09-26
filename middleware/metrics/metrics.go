@@ -8,6 +8,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/rcrowley/go-metrics"
+	influxdb "github.com/vrischmann/go-metrics-influxdb"
 )
 
 func MetricsFunc(m *Metrics) echo.MiddlewareFunc {
@@ -15,34 +16,32 @@ func MetricsFunc(m *Metrics) echo.MiddlewareFunc {
 		return func(c echo.Context) error {
 			req := c.Request()
 			res := c.Response()
-			domain := strings.Replace(req.Host, ".", "_", -1)
-
-			//ReqQps
-			meter := metrics.GetOrRegisterMeter(m.withPrefix("domain."+domain+".ReqQps"), m.opts.Registry)
-			meter.Mark(1)
-
-			//BytesIn
-			bytesIn, err := strconv.ParseInt(req.Header.Get(echo.HeaderContentLength), 10, 0)
-			if err == nil {
-				meter = metrics.GetOrRegisterMeter(m.withPrefix("domain."+domain+".BytesIn"), m.opts.Registry)
-				meter.Mark(bytesIn)
-			}
 
 			start := time.Now()
 			if err := next(c); err != nil {
 				c.Error(err)
 			}
 			stop := time.Now()
+
 			latency := stop.Sub(start)
 			status := res.Status
+			host := strings.Replace(req.Host, ".", "_", -1)
 
-			//Latency
-			h := metrics.GetOrRegisterHistogram(m.withPrefix("domain."+domain+"."+strconv.Itoa(status)+".Latency"), m.opts.Registry,
+			//Total request count.
+			meter := metrics.GetOrRegisterMeter(m.withPrefix("request_total."+".host."+host+".status."+strconv.Itoa(status)), m.opts.Registry)
+			meter.Mark(1)
+
+			//Request size in bytes.
+			meter = metrics.GetOrRegisterMeter(m.withPrefix("request_size."+".host."+host+".status."+strconv.Itoa(status)), m.opts.Registry)
+			meter.Mark(req.ContentLength)
+
+			//Request duration in nanoseconds.
+			h := metrics.GetOrRegisterHistogram(m.withPrefix("request_duration."+".host."+host+".status."+strconv.Itoa(status)), m.opts.Registry,
 				metrics.NewExpDecaySample(1028, 0.015))
 			h.Update(latency.Nanoseconds())
 
-			//BytesOut
-			meter = metrics.GetOrRegisterMeter(m.withPrefix("domain."+domain+"."+strconv.Itoa(status)+".BytesOut"), m.opts.Registry)
+			//Response size in bytes.
+			meter = metrics.GetOrRegisterMeter(m.withPrefix("response_size."+".host."+host+".status."+strconv.Itoa(status)), m.opts.Registry)
 			meter.Mark(res.Size)
 
 			return nil
@@ -61,7 +60,7 @@ func NewMetrics(options ...Option) *Metrics {
 }
 
 func (m *Metrics) withPrefix(s string) string {
-	return m.opts.Prefix + s
+	return m.opts.Prefix + "." + s
 }
 
 func (m *Metrics) MemStats() {
@@ -84,4 +83,21 @@ func (m *Metrics) Log(freq time.Duration, l metrics.Logger) {
 //
 func (m *Metrics) Graphite(freq time.Duration, prefix string, addr *net.TCPAddr) {
 	go metrics.Graphite(m.opts.Registry, freq, prefix, addr)
+}
+
+// InfluxDB reports metrics into influxdb.
+//
+// 	m.InfluxDB(10e9, "http://127.0.0.1:8086","metrics", "test","test"})
+//
+func (m *Metrics) InfluxDB(freq time.Duration, url, database, username, password string) {
+	go influxdb.InfluxDB(m.opts.Registry, freq, url, database, username, password)
+}
+
+// InfluxDBWithTags reports metrics into influxdb with tags.
+// you can set node info into tags.
+//
+// 	m.InfluxDBWithTags(10e9, "http://127.0.0.1:8086","metrics", "test","test", map[string]string{"host":"127.0.0.1"})
+//
+func (m *Metrics) InfluxDBWithTags(freq time.Duration, url, database, username, password string, tags map[string]string) {
+	go influxdb.InfluxDBWithTags(m.opts.Registry, freq, url, database, username, password, tags)
 }

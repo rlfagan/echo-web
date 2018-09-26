@@ -2,7 +2,6 @@ package router
 
 import (
 	"context"
-	"net"
 	"net/url"
 	"os"
 	"os/signal"
@@ -12,7 +11,7 @@ import (
 	mw "github.com/labstack/echo/middleware"
 
 	. "github.com/hb-go/echo-web/conf"
-	"github.com/hb-go/echo-web/middleware/metrics"
+	"github.com/hb-go/echo-web/middleware/metrics/prometheus"
 	"github.com/hb-go/echo-web/middleware/opentracing"
 	"github.com/hb-go/echo-web/middleware/pprof"
 	"github.com/hb-go/echo-web/module/log"
@@ -73,16 +72,33 @@ func RunSubdomains(confFilePath string) {
 
 	// Metrics
 	if !Conf.Metrics.Disable {
+		e.Use(prometheus.MetricsFunc(
+			prometheus.Namespace("echo_web"),
+		))
+
+		/* Push模式
 		m := metrics.NewMetrics(metrics.Prefix(""))
 		e.Use(metrics.MetricsFunc(m))
 		m.MemStats()
-		host, err := os.Hostname()
+
+		hostname, err := os.Hostname()
 		if err != nil {
 			log.Warnf("os.Hostname() error:%v", err)
-			host = "-"
+			hostname = "-"
 		}
+		// Graphite
 		addr, _ := net.ResolveTCPAddr("tcp", Conf.Metrics.Address)
-		m.Graphite(Conf.Metrics.FreqSec*time.Second, "echo-web.host."+host, addr)
+		m.Graphite(Conf.Metrics.FreqSec*time.Second, "echo-web.node."+hostname, addr)
+
+		// InfluxDB
+		m.InfluxDBWithTags(
+			Conf.Metrics.FreqSec*time.Second,
+			"http://127.0.0.1:8086",
+			"metrics",
+			"test",
+			"test",
+			map[string]string{"node": hostname})
+		*/
 	}
 
 	// Secure, XSS/CSS HSTS

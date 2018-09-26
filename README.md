@@ -18,6 +18,7 @@ Go web framework Echo example.
 - [Confd管理配置](#confd%e7%ae%a1%e7%90%86%e9%85%8d%e7%bd%ae)
 - [OpenTracing](#opentracing)
 - [Docker部署](#docker%e9%83%a8%e7%bd%b2)
+- [Metrics](#Metrics)
 - [pprof](#pprof)
 
 ## 环境配置
@@ -179,7 +180,7 @@ util            公共工具
 静态 | 静态资源，支持打包[bindata](https://github.com/jteeuwen/go-bindata#installation)
 安全 | CORS、CSRF、XSS、HSTS、验证码等
 [OpenTracing](http://opentracing.io/) | Tracer支持Jaeger、Appdash，在Request、ORM层做跟踪，可在conf配置开启)
-监控 | `Graphite` ~~InfluxDB~~ `Grafana`
+监控 | `Prometheus` `Grafana` `Graphite` `InfluxDB` 
 其他 | JWT、Socket演示
 
 ## Supervisord部署
@@ -254,16 +255,28 @@ address = "127.0.0.1:6831"
 
 ## Metrics
 > 在conf.toml开启或禁用
-```sh
-# Graphite 浏览器:localhost:8090， 登录账户名:root，密码:root
-docker run -d --name graphite --restart=always -p 8090:80 -p 2003-2004:2003-2004 -p 2023-2024:2023-2024 -p 8125:8125/udp -p 8126:8126 hopsoft/graphite-statsd
-
-# Grafana 浏览器:localhost:3000
-docker run --name grafana -d -p 3000:3000 grafana/grafana
-
-# Dashboard JSON
-# middleware/metrics/grafana_graphite.json
+```bash
+[metrics]
+disable = false
+freq_sec = 10
+address = "127.0.0.1:2003"  # Graphite
 ```
+#### Grafana
+浏览器:localhost:3000
+```bash
+docker run --name grafana -d -p 3000:3000 grafana/grafana
+```
+
+#### Prometheus
+浏览器:localhost:9090
+```bash
+docker run -d --name prometheus -p 9090:9090 -v ~/tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
+              prom/prometheus
+              
+# Dashboard JSON
+# middleware/metrics/prometheus/grafana.json
+```
+[更多参考middleware/metrics/README.md](/middleware/metrics/README.md)
 
 ## Docker部署
 > Dockerfile含两种方式，源码方式镜像包偏大
@@ -304,6 +317,9 @@ $ vi ~/.profile
 grep -v "etcd.localhost.com\|consul.localhost.com\|mysql.localhost.com\|redis.localhost.com\|memcached.localhost.com" /etc/hosts > ~/hosts_temp
 cat ~/hosts_temp > /etc/hosts
 LC_ALL=C ifconfig en0 | grep 'inet ' | cut -d ' ' -f2 | awk '{print $1 " etcd.localhost.com\n" $1 " consul.localhost.com\n" $1 " mysql.localhost.com\n"$1     " redis.localhost.com\n" $1 " memcached.localhost.com"}' >> /etc/hosts
+
+# 修改配置或切换网络时更新
+$ source ~/.profile
 ```
 
 ## pprof

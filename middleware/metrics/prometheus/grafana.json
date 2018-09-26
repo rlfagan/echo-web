@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": 11,
+  "id": 12,
   "links": [],
   "refresh": false,
   "rows": [
@@ -29,7 +29,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 1,
           "legend": {
@@ -56,8 +56,13 @@
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "alias(sumSeries(echo-web.node.$Node.request_total.host.$Host.status.$Status.one-minute), 'Total request')",
+              "expr": "sum(rate(echo_web_request_total{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"}[1m]))",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "total request",
+              "refId": "A",
+              "target": "alias(sumSeries(echo-web.host.$Host.domain.$Domain.ReqQps.mean), 'Request Rate')",
               "textEditor": false
             }
           ],
@@ -81,7 +86,7 @@
           "yaxes": [
             {
               "decimals": 0,
-              "format": "ops",
+              "format": "opm",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -103,7 +108,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 3,
           "legend": {
@@ -134,8 +139,12 @@
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "alias(sumSeries(echo-web.node.$Node.response_size.host.$Host.status.$Status.one-minute), 'Response size')",
+              "expr": "sum(rate(echo_web_response_size_sum{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"}[1m]))",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "response size",
+              "refId": "A",
+              "target": "alias(sumSeries(echo-web.host.$Host.domain.$Domain.$Status.BytesOut.mean), 'Bytes Out')",
               "textEditor": false
             }
           ],
@@ -158,7 +167,7 @@
           },
           "yaxes": [
             {
-              "format": "decbits",
+              "format": "decbytes",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -180,7 +189,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 2,
           "legend": {
@@ -207,29 +216,36 @@
           "steppedLine": false,
           "targets": [
             {
-              "refId": "C",
-              "target": "alias(percentileOfSeries(echo-web.node.$Node.request_duration.host.$Host.status.$Status.999-percentile, 100, false), '999-percentile')",
-              "textEditor": false
+              "expr": "max(echo_web_request_duration{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"})",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 2,
+              "legendFormat": "max",
+              "refId": "A",
+              "target": ""
             },
             {
-              "refId": "D",
-              "target": "alias(percentileOfSeries(echo-web.node.$Node.request_duration.host.$Host.status.$Status.99-percentile, 100, false), '99-percentile')",
-              "textEditor": false
+              "expr": "min(echo_web_request_duration{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"})",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 2,
+              "legendFormat": "min",
+              "refId": "B"
             },
             {
-              "refId": "E",
-              "target": "alias(percentileOfSeries(echo-web.node.$Node.request_duration.host.$Host.status.$Status.95-percentile, 100, false), '95-percentile')",
-              "textEditor": false
+              "expr": "rate(echo_web_request_duration_sum{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"}[1m])/rate(echo_web_request_duration_count{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"}[1m])",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 2,
+              "legendFormat": "mean-{{status}}",
+              "refId": "C"
             },
             {
-              "refId": "F",
-              "target": "alias(percentileOfSeries(echo-web.node.$Node.request_duration.host.$Host.status.$Status.75-percentile, 100, false), '75-percentile')",
-              "textEditor": false
-            },
-            {
-              "refId": "G",
-              "target": "alias(percentileOfSeries(echo-web.node.$Node.request_duration.host.$Host.status.$Status.50-percentile, 100, false), '50-percentile')",
-              "textEditor": false
+              "expr": "sum(echo_web_request_duration{group=\"production\",job=\"echo-web\",host=~\"$Host\",status=~\"$Status\",node=~\"$Node\"}) by (quantile)",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "quantile={{quantile}}",
+              "refId": "D"
             }
           ],
           "thresholds": [],
@@ -285,7 +301,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 4,
           "legend": {
@@ -312,9 +328,13 @@
           "steppedLine": false,
           "targets": [
             {
+              "expr": "go_memstats_alloc_bytes{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{instance}}",
               "refId": "A",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.Alloc.value, 2, 5)",
-              "textEditor": true
+              "target": "aliasByNode(echo-web.host.$Host.runtime.MemStats.Alloc.value, 5, 2)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -358,7 +378,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 5,
           "legend": {
@@ -385,9 +405,13 @@
           "steppedLine": false,
           "targets": [
             {
+              "expr": "go_memstats_heap_alloc_bytes{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{instance}}",
               "refId": "A",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.HeapAlloc.value, 2, 5)",
-              "textEditor": true
+              "target": "aliasByNode(echo-web.host.$Host.runtime.MemStats.HeapAlloc.value, 5, 2)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -431,7 +455,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 6,
           "legend": {
@@ -458,9 +482,13 @@
           "steppedLine": false,
           "targets": [
             {
+              "expr": "go_memstats_heap_objects{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{instance}}",
               "refId": "A",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.HeapObjects.value, 2, 5)",
-              "textEditor": true
+              "target": "aliasByNode(echo-web.host.$Host.runtime.MemStats.HeapObjects.value, 5, 2)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -516,7 +544,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 7,
           "legend": {
@@ -543,29 +571,13 @@
           "steppedLine": false,
           "targets": [
             {
-              "refId": "D",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.PauseNs.999-percentile, 2,6)",
-              "textEditor": true
-            },
-            {
-              "refId": "E",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.PauseNs.99-percentile, 2, 6)",
+              "expr": "go_gc_duration_seconds{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{quantile}}-{{instance}}",
+              "refId": "A",
+              "target": "aliasByNode(echo-web.host.$Host.runtime.MemStats.PauseNs.mean, 5, 2)",
               "textEditor": false
-            },
-            {
-              "refId": "F",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.PauseNs.95-percentile, 2, 6)",
-              "textEditor": false
-            },
-            {
-              "refId": "G",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.PauseNs.75-percentile,  2, 6)",
-              "textEditor": true
-            },
-            {
-              "refId": "H",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.MemStats.PauseNs.50-percentile, 2, 6)",
-              "textEditor": true
             }
           ],
           "thresholds": [],
@@ -609,7 +621,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 8,
           "legend": {
@@ -636,10 +648,13 @@
           "steppedLine": false,
           "targets": [
             {
-              "hide": false,
-              "refId": "B",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.NumGoroutine.value, 2, 4)",
-              "textEditor": true
+              "expr": "go_goroutines{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{instance}}",
+              "refId": "A",
+              "target": "aliasByNode(echo-web.host.$Host.runtime.NumGoroutine.value, 4, 2)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -685,7 +700,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Graphite",
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 9,
           "legend": {
@@ -712,9 +727,13 @@
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "aliasByNode(echo-web.node.$Instance.runtime.NumThread.value, 2, 4)",
-              "textEditor": true
+              "expr": "go_threads{group=\"production\",job=\"echo-web\",instance=~\"$Instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{instance}}",
+              "refId": "A",
+              "target": "aliasByNode(echo-web.host.$Host.runtime.NumThread.value, 4, 2)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -775,14 +794,14 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Graphite",
+        "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "Host",
         "options": [],
-        "query": "echo-web.node.*.request_total.host.*",
+        "query": "label_values(echo_web_request_total, host)",
         "refresh": 2,
         "regex": "",
         "sort": 0,
@@ -798,41 +817,15 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Graphite",
+        "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "Status",
         "options": [],
-        "query": "echo-web.node.*.request_total.host.$Host.status.*",
+        "query": "label_values(echo_web_request_total, status)",
         "refresh": 2,
-        "regex": "/.*[1|2|3|4|5]/",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "Graphite",
-        "hide": 0,
-        "includeAll": true,
-        "label": null,
-        "multi": true,
-        "name": "Node",
-        "options": [],
-        "query": "echo-web.node.*",
-        "refresh": 1,
         "regex": "",
         "sort": 0,
         "tagValuesQuery": "",
@@ -844,18 +837,41 @@
       {
         "allValue": null,
         "current": {
-          "text": "stevenchendembp",
-          "value": "stevenchendembp"
+          "text": "All",
+          "value": "$__all"
         },
-        "datasource": "Graphite",
+        "datasource": "Prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "Node",
+        "options": [],
+        "query": "label_values(echo_web_request_total, node)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "echo.www.localhost.com:80",
+          "value": "echo.www.localhost.com:80"
+        },
+        "datasource": "Prometheus",
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
         "name": "Instance",
         "options": [],
-        "query": "echo-web.node.*",
-        "refresh": 1,
+        "query": "label_values(go_memstats_alloc_bytes{group=\"production\",job=\"echo-web\"}, instance)",
+        "refresh": 2,
         "regex": "",
         "sort": 0,
         "tagValuesQuery": "",
@@ -867,8 +883,8 @@
     ]
   },
   "time": {
-    "from": "now-5m",
-    "to": "now"
+    "from": "now/d",
+    "to": "now/d"
   },
   "timepicker": {
     "refresh.intervals": [
@@ -919,6 +935,6 @@
     ]
   },
   "timezone": "",
-  "title": "echo-web-graphite",
-  "version": 16
+  "title": "echo-web-prometheus",
+  "version": 19
 }
