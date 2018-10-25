@@ -323,7 +323,7 @@ $ source ~/.profile
 ```
 
 ## pprof
-[Profiling Go Programs](https://blog.golang.org/profiling-go-programs)
+
 ```go
 import "github.com/hb-go/echo-web/middleware/pprof"
 
@@ -332,8 +332,17 @@ echo.Pre(pprof.Serve())
 echo.Use(pprof.Serve())
 ```
 Web浏览prof信息
-http://{HOST}/debug/pprof/
+> http://{HOST}/debug/pprof/
+
+[google/pprof](https://github.com/google/pprof)
+- [Building pprof](https://github.com/google/pprof#building-pprof)
+- [Run pprof via a web interface](https://github.com/google/pprof#run-pprof-via-a-web-interface)
 ```bash
-$ go tool pprof http://{HOST}/debug/pprof/{profile}
+$ go get -u github.com/google/pprof
+
+$ pprof -http=[host]:[port] [main_binary] profile.pb.gz
+
+# 使用echo-web演示
+$ pprof -http=localhost:8080 --alloc_space http://echo.www.hbchen.com/debug/pprof/heap
 ```
 
