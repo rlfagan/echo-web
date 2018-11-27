@@ -1,10 +1,14 @@
 # Echo Web
+[![Slack](https://img.shields.io/badge/slack-join-D60051.svg)](https://hbchen.slack.com/messages/CE6S4HJN6)
+
 Go web framework Echo example. 
 > Echo中文文档 [go-echo.org](http://go-echo.org/)
 
 > Requires
-- go1.8+
-- Echo V3
+
+[![Slack](https://img.shields.io/badge/Echo-v3+-41DAFF.svg)](https://github.com/labstack/echo)
+[![Slack](https://img.shields.io/badge/go-1.11+-2A489A.svg)](https://golang.org)
+[![Slack](https://img.shields.io/badge/GO111MODULE-on-brightgreen.svg)](https://golang.org)
 
 > [在线演示](http://echo.www.hbchen.com/)
 
@@ -29,6 +33,9 @@ $ go get github.com:hb-go/echo-web
 ```
 
 ##### 2.依赖安装
+> 使用`go mod`
+
+###### ~~Glide~~
 > [glide工具安装](https://github.com/Masterminds/glide#install)
 
 > .glide/mirrors.yaml[设置参考](glide.mirrors.yaml)
