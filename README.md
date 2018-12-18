@@ -33,7 +33,7 @@ $ go get github.com:hb-go/echo-web
 ```
 
 ##### 2.依赖安装
-> 使用`go mod`
+###### go mod
 > GFW[goproxy.io](https://goproxy.io/)
 
 ###### ~~Glide~~
