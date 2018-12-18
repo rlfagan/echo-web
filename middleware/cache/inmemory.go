@@ -30,12 +30,12 @@ func (c *InMemoryStore) Get(key string, value interface{}) error {
 
 func (c *InMemoryStore) Set(key string, value interface{}, expires time.Duration) error {
 	// NOTE: go-cache understands the values of DEFAULT and FOREVER
-	c.Cache.Set(key, value, expires)
+	c.Cache.Set(key, c.value(value), expires)
 	return nil
 }
 
 func (c *InMemoryStore) Add(key string, value interface{}, expires time.Duration) error {
-	err := c.Cache.Add(key, value, expires)
+	err := c.Cache.Add(key, c.value(value), expires)
 	if err == cache.ErrKeyExists {
 		return ErrNotStored
 	}
@@ -43,7 +43,7 @@ func (c *InMemoryStore) Add(key string, value interface{}, expires time.Duration
 }
 
 func (c *InMemoryStore) Replace(key string, value interface{}, expires time.Duration) error {
-	if err := c.Cache.Replace(key, value, expires); err != nil {
+	if err := c.Cache.Replace(key, c.value(value), expires); err != nil {
 		return ErrNotStored
 	}
 	return nil
@@ -75,4 +75,13 @@ func (c *InMemoryStore) Decrement(key string, n uint64) (uint64, error) {
 func (c *InMemoryStore) Flush() error {
 	c.Cache.Flush()
 	return nil
+}
+
+func (c *InMemoryStore) value(value interface{}) interface{} {
+	v := reflect.ValueOf(value)
+	if v.Kind() == reflect.Ptr {
+		p := v.Elem()
+		value = p.Interface()
+	}
+	return value
 }
