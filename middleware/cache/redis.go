@@ -50,11 +50,14 @@ func NewRedisCache(host string, password string, defaultExpiration time.Duration
 }
 
 func (c *RedisStore) Set(key string, value interface{}, expires time.Duration) error {
-	return c.invoke(c.pool.Get().Do, key, value, expires)
+	conn := c.pool.Get()
+	defer conn.Close()
+	return c.invoke(conn.Do, key, value, expires)
 }
 
 func (c *RedisStore) Add(key string, value interface{}, expires time.Duration) error {
 	conn := c.pool.Get()
+	defer conn.Close()
 	if exists(conn, key) {
 		return ErrNotStored
 	}
@@ -63,6 +66,7 @@ func (c *RedisStore) Add(key string, value interface{}, expires time.Duration) e
 
 func (c *RedisStore) Replace(key string, value interface{}, expires time.Duration) error {
 	conn := c.pool.Get()
+	defer conn.Close()
 	if !exists(conn, key) {
 		return ErrNotStored
 	}
@@ -171,8 +175,7 @@ func (c *RedisStore) invoke(f func(string, ...interface{}) (interface{}, error),
 	if err != nil {
 		return err
 	}
-	conn := c.pool.Get()
-	defer conn.Close()
+
 	if expires > 0 {
 		_, err := f("SETEX", key, int32(expires/time.Second), b)
 		return err
