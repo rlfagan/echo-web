@@ -10,6 +10,7 @@ keys = [
     "/session_store",
     "/cache_store",
     "/app/name",
+    "/app/version",
     "/server/graceful",
     "/server/addr",
     "/server/domain_api",

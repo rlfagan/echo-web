@@ -2,6 +2,7 @@ package router
 
 import (
 	"context"
+	"net/http"
 	"net/url"
 	"os"
 	"os/signal"
@@ -9,6 +10,8 @@ import (
 
 	"github.com/labstack/echo"
 	mw "github.com/labstack/echo/middleware"
+	"go.elastic.co/apm"
+	"go.elastic.co/apm/module/apmecho"
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/metrics/prometheus"
@@ -55,10 +58,20 @@ func RunSubdomains(confFilePath string) {
 
 	e.Pre(mw.RemoveTrailingSlash())
 
+	// Elastic APM
+	// Requires APM Server 6.5.0 or newer
+	apm.DefaultTracer.Service.Name = Conf.Opentracing.ServiceName
+	apm.DefaultTracer.Service.Version = Conf.App.Version
+	e.Use(apmecho.Middleware(
+		apmecho.WithRequestIgnorer(func(request *http.Request) bool {
+			return false
+		}),
+	))
+
 	// OpenTracing
 	otCtf := opentracing.Configuration{
 		Disabled: Conf.Opentracing.Disable,
-		Type:     Conf.Opentracing.Type,
+		Type:     opentracing.TracerType(Conf.Opentracing.Type),
 	}
 	if closer := otCtf.InitGlobalTracer(
 		opentracing.ServiceName(Conf.Opentracing.ServiceName),

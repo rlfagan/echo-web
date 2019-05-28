@@ -2,10 +2,12 @@ package opentracing
 
 import (
 	"fmt"
+	"go.elastic.co/apm"
+	"go.elastic.co/apm/module/apmot"
+	"io"
 	"net"
 	"net/http"
 	"net/url"
-	"io"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
@@ -18,17 +20,19 @@ import (
 	"sourcegraph.com/sourcegraph/appdash/traceapp"
 )
 
+type TracerType string
+
 const (
 	DefaultKey = "github.com/hb-go/echo-web/middleware/opentracing"
 
-	TracerTypeJaeger = "jaeger"
-
-	TracerTypeAppdash = "appdash"
+	TracerTypeJaeger  TracerType = "jaeger"
+	TracerTypeAppdash            = "appdash"
+	TracerTypeElastic            = "elastic"
 )
 
 type Configuration struct {
 	Disabled bool
-	Type     string
+	Type     TracerType
 }
 
 func (c Configuration) InitGlobalTracer(options ...Option) io.Closer {
@@ -43,6 +47,9 @@ func (c Configuration) InitGlobalTracer(options ...Option) io.Closer {
 			return nil
 		case TracerTypeJaeger:
 			return initGlobalTracer_Jaeger(opts.ServiceName, opts.Address)
+		case TracerTypeElastic:
+			initGlobalTracer_Elastic(opts.ServiceName)
+			return nil
 		default:
 			return nil
 		}
@@ -91,7 +98,6 @@ func initGlobalTracer_Jaeger(serviceName, addr string) io.Closer {
 		log.Printf("could not initialize jaeger tracer: %s", err.Error())
 		return nil
 	}
-	//defer closer.Close()
 	return closer
 }
 
@@ -136,6 +142,11 @@ func initGlobalTracer_Appdash(addr string) {
 
 	tracer := appdashot.NewTracer(appdash.NewRemoteCollector(collectorAdd))
 	opentracing.InitGlobalTracer(tracer)
+}
+
+func initGlobalTracer_Elastic(serviceName string) {
+	apm.DefaultTracer.Service.Name = serviceName
+	opentracing.InitGlobalTracer(apmot.New())
 }
 
 func OpenTracing(comp string) echo.MiddlewareFunc {

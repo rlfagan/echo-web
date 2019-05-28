@@ -12,6 +12,7 @@ cache_store = "REDIS"
 
 [app]
 name = "Echo Web"
+version = "0.0.1"
 
 [server]
 graceful = true
@@ -51,12 +52,12 @@ pwd = "123456"
 server = "localhost:11211"
 
 [opentracing]
-disable = true
+disable = false
 
-# jaeger or appdash
-type = "jaeger"
+# "jaeger" "appdash" or "elastic"
+type = "elastic"
 
-# jaeger serviceName
+# jaeger or elastic serviceName
 service_name = "echo-web"
 
 # jaeger-agent 127.0.0.1:6831

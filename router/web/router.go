@@ -4,12 +4,11 @@ import (
 	"github.com/labstack/echo"
 	mw "github.com/labstack/echo/middleware"
 
-	"github.com/hb-go/echo-web/middleware/captcha"
-	"github.com/hb-go/echo-web/middleware/staticbin"
-
 	"github.com/hb-go/echo-web/assets"
 	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/captcha"
 	"github.com/hb-go/echo-web/middleware/opentracing"
+	"github.com/hb-go/echo-web/middleware/staticbin"
 	"github.com/hb-go/echo-web/model"
 	"github.com/hb-go/echo-web/module/auth"
 	"github.com/hb-go/echo-web/module/cache"
@@ -17,9 +16,9 @@ import (
 	"github.com/hb-go/echo-web/module/session"
 )
 
-//---------
+// ---------
 // Website Routers
-//---------
+// ---------
 func Routers() *echo.Echo {
 	// Echo instance
 	e := echo.New()

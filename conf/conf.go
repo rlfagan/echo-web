@@ -50,7 +50,8 @@ type config struct {
 }
 
 type app struct {
-	Name string `toml:"name"`
+	Name    string `toml:"name"`
+	Version string `toml:"version"`
 }
 
 type server struct {
@@ -141,7 +142,7 @@ func InitConfig(configFile string) error {
 }
 
 func GetLogLvl() log.Lvl {
-	//DEBUG INFO WARN ERROR OFF
+	// DEBUG INFO WARN ERROR OFF
 	switch Conf.LogLevel {
 	case "DEBUG":
 		return log.DEBUG
