@@ -3,7 +3,7 @@ package web
 import (
 	"sync"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/opentracing/opentracing-go"
 
 	ot "github.com/hb-go/echo-web/middleware/opentracing"

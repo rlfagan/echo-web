@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/labstack/echo/v4"
+
 	"github.com/hb-go/echo-web/middleware/session"
-	"github.com/labstack/echo"
 )
 
 const (

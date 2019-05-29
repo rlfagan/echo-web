@@ -6,7 +6,7 @@ import (
 	// "time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	// "github.com/jinzhu/gorm"
 
 	"github.com/hb-go/echo-web/model"

@@ -4,9 +4,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/hb-go/gorm"
 
+	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/hb-go/echo-web/module/log"
 	"github.com/hb-go/echo-web/util/conv"
 	"github.com/hb-go/echo-web/util/crypt"
@@ -136,7 +136,7 @@ func (c *CacheDB) Count(out interface{}) *CacheDB {
 }
 
 func cacheKey(gSql gorm.SQL) string {
-	//sqlStr := fmt.Sprintf(CacheKeyFormat, sql.SQL, sql.SQLVars)
+	// sqlStr := fmt.Sprintf(CacheKeyFormat, sql.SQL, sql.SQLVars)
 	sqlStr := sql.SqlParse(gSql.SQL, gSql.SQLVars)
 	return crypt.MD5([]byte(sqlStr))
 }

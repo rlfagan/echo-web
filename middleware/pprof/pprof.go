@@ -5,7 +5,7 @@ import (
 	_ "net/http/pprof"
 	"strings"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 // 由于需要"/debug/pprof/"匹配URL.path前缀，如果有RemoveTrailingSlash()，需在此之前加pprof

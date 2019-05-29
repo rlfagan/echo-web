@@ -4,10 +4,10 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/hb-go/gorm"
 
 	. "github.com/hb-go/echo-web/conf"
+	"github.com/hb-go/echo-web/middleware/cache"
 	"github.com/hb-go/echo-web/model/orm"
 	"github.com/hb-go/echo-web/module/log"
 )

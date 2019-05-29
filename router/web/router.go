@@ -1,8 +1,8 @@
 package web
 
 import (
-	"github.com/labstack/echo"
-	mw "github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	mw "github.com/labstack/echo/v4/middleware"
 
 	"github.com/hb-go/echo-web/assets"
 	. "github.com/hb-go/echo-web/conf"

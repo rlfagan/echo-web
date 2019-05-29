@@ -3,10 +3,10 @@ package cache
 import (
 	"time"
 
-	ec "github.com/hb-go/echo-web/middleware/cache"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 
 	. "github.com/hb-go/echo-web/conf"
+	ec "github.com/hb-go/echo-web/middleware/cache"
 )
 
 const (

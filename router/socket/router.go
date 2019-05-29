@@ -1,8 +1,8 @@
 package socket
 
 import (
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 
 	"github.com/hb-go/echo-web/model"
 	"github.com/hb-go/echo-web/module/auth"

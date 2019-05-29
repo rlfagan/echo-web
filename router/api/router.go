@@ -1,8 +1,8 @@
 package api
 
 import (
-	"github.com/labstack/echo"
-	mw "github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	mw "github.com/labstack/echo/v4/middleware"
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/opentracing"

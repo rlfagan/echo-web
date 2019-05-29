@@ -8,10 +8,10 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/labstack/echo"
-	mw "github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	mw "github.com/labstack/echo/v4/middleware"
 	"go.elastic.co/apm"
-	"go.elastic.co/apm/module/apmecho"
+	"go.elastic.co/apm/module/apmechov4"
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/metrics/prometheus"
@@ -62,8 +62,8 @@ func RunSubdomains(confFilePath string) {
 	// Requires APM Server 6.5.0 or newer
 	apm.DefaultTracer.Service.Name = Conf.Opentracing.ServiceName
 	apm.DefaultTracer.Service.Version = Conf.App.Version
-	e.Use(apmecho.Middleware(
-		apmecho.WithRequestIgnorer(func(request *http.Request) bool {
+	e.Use(apmechov4.Middleware(
+		apmechov4.WithRequestIgnorer(func(request *http.Request) bool {
 			return false
 		}),
 	))

@@ -8,13 +8,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 
+	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/middleware/multitemplate"
 	"github.com/hb-go/echo-web/middleware/pongo2echo"
 	"github.com/hb-go/echo-web/middleware/session"
-
-	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/model"
 	"github.com/hb-go/echo-web/module/auth"
 	"github.com/hb-go/echo-web/module/log"
@@ -133,7 +132,7 @@ func LoadTemplates() echo.Renderer {
 		case BINDATA:
 			return pongo2echo.New(
 				pongo2echo.RenderOptions{
-					TmplLoader: BindataFileLoader{baseDir: Conf.Tmpl.Dir},
+					TmplLoader:  BindataFileLoader{baseDir: Conf.Tmpl.Dir},
 					ContentType: "text/html; charset=utf-8",
 					Debug:       !Conf.ReleaseMode,
 				})

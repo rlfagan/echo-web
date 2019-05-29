@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 
 	. "github.com/hb-go/echo-web/conf"
 	"github.com/hb-go/echo-web/module/log"

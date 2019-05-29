@@ -1,8 +1,9 @@
 package cache
 
 import (
-	"github.com/gomodule/redigo/redis"
 	"time"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 // Wraps the Redis client to meet the Cache interface.

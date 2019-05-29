@@ -1,10 +1,10 @@
 # Echo Web
 [![Slack](https://img.shields.io/badge/slack-join-D60051.svg)](https://hbchen.slack.com/messages/CE6S4HJN6)
 
-Go web framework Echo example. 
+Go web framework Echo example. <br/>`master`为`v4`版本，`v3`切换到`v3`分支。
 > Requires
 
-[![Slack](https://img.shields.io/badge/Echo-v3+-41DAFF.svg)](https://github.com/labstack/echo)
+[![Slack](https://img.shields.io/badge/Echo-v4+-41DAFF.svg)](https://github.com/labstack/echo)
 [![Slack](https://img.shields.io/badge/go-1.11+-2A489A.svg)](https://golang.org)
 [![Slack](https://img.shields.io/badge/GO111MODULE-on-brightgreen.svg)](https://golang.org)
 

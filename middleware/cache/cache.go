@@ -7,11 +7,12 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
-	"github.com/labstack/echo"
 	"io"
 	"net/http"
 	"net/url"
 	"time"
+
+	"github.com/labstack/echo/v4"
 )
 
 const (
@@ -89,7 +90,7 @@ func (w *cachedWriter) Written() bool {
 func (w *cachedWriter) Write(data []byte) (int, error) {
 	ret, err := w.Writer.Write(data)
 	if err == nil {
-		//cache response
+		// cache response
 		store := w.store
 		header := w.Response.Header()
 		// newHeader := http.Header{}

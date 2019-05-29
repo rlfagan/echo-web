@@ -2,19 +2,19 @@ package opentracing
 
 import (
 	"fmt"
-	"go.elastic.co/apm"
-	"go.elastic.co/apm/module/apmot"
 	"io"
 	"net"
 	"net/http"
 	"net/url"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 	"github.com/uber/jaeger-lib/metrics"
+	"go.elastic.co/apm"
+	"go.elastic.co/apm/module/apmot"
 	"sourcegraph.com/sourcegraph/appdash"
 	appdashot "sourcegraph.com/sourcegraph/appdash/opentracing"
 	"sourcegraph.com/sourcegraph/appdash/traceapp"
