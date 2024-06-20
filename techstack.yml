@@ -1,0 +1,742 @@
+repo_name: rlfagan/echo-web
+report_id: 020ca57e864f2e5fc45f0e0f0e2b6a1a
+version: 0.1
+repo_type: Public
+timestamp: '2024-06-20T23:02:46+00:00'
+requested_by: rlfagan
+provider: github
+branch: master
+detected_tools_count: 53
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: Golang
+  description: An open source programming language that makes it easy to build simple,
+    reliable, and efficient software
+  website_url: http://golang.org/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1005/O6AczwfV_400x400.png
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: SQL
+  description: It is a domain-specific language used in programming
+  website_url: https://en.wikipedia.org/wiki/SQL
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/2271/default_068d33483bba6b81ee13fbd4dc7aab9780896a54.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/res/db/structure.sql
+  detection_source: res/db/structure.sql
+  last_updated_by: Hobo86
+  last_updated_on: 2016-07-29 09:52:53.000000000 Z
+- name: Echo
+  description: High performance, extensible, minimalist Go web framework
+  website_url: https://echo.labstack.com
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Microframeworks (Backend)
+  image_url: https://img.stackshare.io/service/4996/9P0MlumU_400x400.jpg
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: GORM
+  description: The fantastic ORM library for Golang
+  website_url: https://gorm.io/
+  version: 1.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Object Relational Mapper (ORM)
+  image_url: https://img.stackshare.io/service/5194/default_c656a82cbf499a944563022a13ebbd62c9f3aa4b.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: MySQL
+  description: The world's most popular open source database
+  website_url: http://www.mysql.com
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1025/logo-mysql-170x170.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: Redis
+  description: Open source (BSD licensed), in-memory data structure store
+  website_url: http://redis.io/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: In-Memory Databases
+  image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: Grafana
+  description: Open source Graphite &amp; InfluxDB Dashboard and Graph Editor
+  website_url: http://grafana.org/
+  license: AGPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Monitoring
+  sub_category: Monitoring Tools
+  image_url: https://img.stackshare.io/service/2645/default_8f9d552b144493679449b16c79647da5787e808b.jpg
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/middleware/metrics/prometheus/grafana.json
+  detection_source: middleware/metrics/prometheus/grafana.json
+  last_updated_by: Hobo86
+  last_updated_on: 2018-09-26 13:50:44.000000000 Z
+- name: Segment
+  description: A single hub to collect, translate and send your data with the flip
+    of a switch.
+  website_url: https://segment.com/?utm_medium=paid-display&utm_source=stackshare&utm_campaign=analytics
+  open_source: false
+  hosted_saas: true
+  category: Analytics
+  sub_category: Analytics Integrator
+  image_url: https://img.stackshare.io/service/5/default_aa447805966bbb635af0d113e93e1f1030497052.jpg
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: Alpine Linux
+  description: Security-oriented, lightweight Linux distribution based on musl libc
+    and busybox
+  website_url: https://www.alpinelinux.org/
+  version: 3.2.0
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Operating Systems
+  image_url: https://img.stackshare.io/service/6429/alpine_linux.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/Dockerfile
+  detection_source: Dockerfile
+  last_updated_by: Hobo86
+  last_updated_on: 2017-10-29 03:24:01.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/rlfagan/echo-web
+  detection_source: Repo Metadata
+- name: crypto
+  description: Go supplementary cryptography libraries
+  package_url: https://pkg.go.dev/golang.org/x/crypto
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+  vulnerabilities:
+  - name: Improper Verification of Cryptographic Signature in golang.org/x/crypto
+    cve_id: CVE-2020-9283
+    cve_url: https://github.com/advisories/GHSA-ffhg-7mh4-33c4
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 0.0.0-20200220183623-bac4c82f6975
+- name: yaml.v2
+  description: YAML support for the Go language
+  package_url: https://pkg.go.dev/gopkg.in/yaml.v2
+  version: 2.2.1
+  license: LGPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+  vulnerabilities:
+  - name: Excessive Platform Resource Consumption within a Loop in Kubernetes
+    cve_id: CVE-2019-11254
+    cve_url: https://github.com/advisories/GHSA-wxc4-f4m6-wwqv
+    detected_date: Jan 28
+    severity: moderate
+    first_patched: 2.2.8
+- name: basictracer-go
+  description: The Go incarnation of the cross-platform "BasicTracer" reference impl
+    for OpenTracing
+  package_url: https://pkg.go.dev/github.com/opentracing/basictracer-go
+  version: 1.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: common
+  description: Go libraries shared across Prometheus components and libraries
+  package_url: https://pkg.go.dev/github.com/prometheus/common
+  version: 0.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: context
+  description: A golang registry for global request variables
+  package_url: https://pkg.go.dev/github.com/gorilla/context
+  version: 1.1.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: dchest/captcha
+  description: Go package captcha implements generation and verification of image
+    and audio CAPTCHAs
+  package_url: https://pkg.go.dev/github.com/dchest/captcha
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: go-colorable
+  description: Go-colorable Colorable writer for windows
+  package_url: https://pkg.go.dev/github.com/mattn/go-colorable
+  version: 0.0.9
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: go-metrics
+  description: Go port of Coda Hale's Metrics library
+  package_url: https://pkg.go.dev/github.com/rcrowley/go-metrics
+  version: 0.0.0
+  license: Other
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: go-metrics-influxdb
+  description: This is a reporter for the go-metrics library which will post the metrics
+    to InfluxDB
+  package_url: https://pkg.go.dev/github.com/vrischmann/go-metrics-influxdb
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: go-mssqldb
+  description: Microsoft SQL server driver written in go language
+  package_url: https://pkg.go.dev/github.com/denisenkom/go-mssqldb
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: go-sqlite3
+  description: Sqlite3 driver for go using database/sql
+  package_url: https://pkg.go.dev/github.com/mattn/go-sqlite3
+  version: 1.10.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: go-testdb
+  description: Framework for stubbing responses from go's driver.Driver interface
+  package_url: https://pkg.go.dev/github.com/erikstmartin/go-testdb
+  version: 0.0.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: gomemcache
+  description: 'Go Memcached client library #golang'
+  package_url: https://pkg.go.dev/github.com/bradfitz/gomemcache
+  version: 0.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: gommon
+  description: Common packages for Go
+  package_url: https://pkg.go.dev/github.com/labstack/gommon
+  version: 0.2.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: hdrhistogram
+  description: A pure Go implementation of Gil Tene's HDR Histogram
+  package_url: https://pkg.go.dev/github.com/codahale/hdrhistogram
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: inflection
+  description: Pluralizes and singularizes English nouns
+  package_url: https://pkg.go.dev/github.com/jinzhu/inflection
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: influxdb
+  description: Scalable datastore for metrics
+  package_url: https://pkg.go.dev/github.com/influxdata/influxdb
+  version: 0.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: jaeger-client-go
+  description: Jaeger Bindings for Go OpenTracing API
+  package_url: https://pkg.go.dev/github.com/uber/jaeger-client-go
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: juju/errors
+  description: Common juju errors and functions to annotate errors
+  package_url: https://pkg.go.dev/github.com/juju/errors
+  version: 0.0.0
+  license: Other
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: jwt-go
+  description: Golang implementation of JSON Web Tokens
+  package_url: https://pkg.go.dev/github.com/dgrijalva/jwt-go
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: loggo
+  description: A logging library for Go
+  package_url: https://pkg.go.dev/github.com/juju/loggo
+  version: 0.0.0
+  license: Other
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: mgo.v2
+  description: The MongoDB driver for Go. UNMAINTAINED - SEE BELOW
+  package_url: https://pkg.go.dev/gopkg.in/mgo.v2
+  version: 2.0.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: mux
+  description: "A powerful HTTP router and URL matcher for building Go web servers
+    with \U0001F98D"
+  package_url: https://pkg.go.dev/github.com/gorilla/mux
+  version: 1.6.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: net
+  description: Go supplementary network libraries
+  package_url: https://pkg.go.dev/golang.org/x/net
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: now
+  description: Now is a time toolkit for golang
+  package_url: https://pkg.go.dev/github.com/jinzhu/now
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: opentracing-go
+  description: OpenTracing API for Go
+  package_url: https://pkg.go.dev/github.com/opentracing/opentracing-go
+  version: 1.0.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: platform
+  description: Archived incubation repo for InfluxDB 2.0
+  package_url: https://pkg.go.dev/github.com/influxdata/platform
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: pongo2
+  description: Django-syntax like template-engine for Go
+  package_url: https://pkg.go.dev/github.com/flosch/pongo2
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: procfs
+  description: Procfs provides functions to retrieve system
+  package_url: https://pkg.go.dev/github.com/prometheus/procfs
+  version: 0.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: redistore
+  description: A session store backend for gorilla/sessions using Redis
+  package_url: https://pkg.go.dev/github.com/boj/redistore
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: robfig/go-cache
+  description: An in-memory key:value store/cache
+  package_url: https://pkg.go.dev/github.com/robfig/go-cache
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: santhosh-tekuri/jsonschema
+  description: JSONSchema
+  package_url: https://pkg.go.dev/github.com/santhosh-tekuri/jsonschema
+  version: 1.2.3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: sessions
+  description: Package gorilla/sessions provides cookie and filesystem sessions and
+    infrastructure for custom session backends
+  package_url: https://pkg.go.dev/github.com/gorilla/sessions
+  version: 1.1.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: sys
+  description: Go packages for low-level interaction with the operating system
+  package_url: https://pkg.go.dev/golang.org/x/sys
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: text
+  description: Go text processing support
+  package_url: https://pkg.go.dev/golang.org/x/text
+  version: 0.3.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: toml
+  description: TOML parser for Golang with reflection
+  package_url: https://pkg.go.dev/github.com/BurntSushi/toml
+  version: 0.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: tools
+  description: Go Tools
+  package_url: https://pkg.go.dev/golang.org/x/tools
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2019-05-28 12:35:54.000000000 Z
+- name: uber-go/atomic
+  description: Wrapper types for sync/atomic which enforce atomic access
+  package_url: https://pkg.go.dev/github.com/uber-go/atomic
+  version: 1.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
+- name: vfsgen
+  description: Takes an input http.FileSystem
+  package_url: https://pkg.go.dev/github.com/shurcooL/vfsgen
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/rlfagan/echo-web/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Hobo86
+  last_updated_on: 2018-11-27 09:01:27.000000000 Z
